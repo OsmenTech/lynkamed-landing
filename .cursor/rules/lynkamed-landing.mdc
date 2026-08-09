@@ -1,0 +1,10 @@
+---
+description: LynkaMed Landing — reglas siempre activas para agentes
+alwaysApply: true
+---
+
+# LynkaMed Landing
+
+- Marketing lynkamed.mx. Hero limpio, marca primero, SEO real.
+- Lint + build deben pasar. No versionar lynkamed.mp4.
+- Ramas: feature → develop → main (deploy).
