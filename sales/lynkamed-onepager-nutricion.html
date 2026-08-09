@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>LynkaMed — Nutricion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 210mm; height: 297mm;
+  font-family: 'Figtree', system-ui, sans-serif;
+  color: #0f172a; background: #fff;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+a { color: inherit; text-decoration: none; border: 0; outline: 0; box-shadow: none; }
+.page { width: 210mm; height: 297mm; position: relative; overflow: hidden; background: #f1f5f9; }
+.ribbon {
+  background: #00d4ff; color: #002147; text-align: center;
+  font-family: 'Manrope', sans-serif; font-size: 9px; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 2.2mm 4mm;
+}
+.hero {
+  position: relative; padding: 8mm 14mm 14mm;
+  background:
+    radial-gradient(ellipse 65% 70% at 95% 0%, rgba(0,212,255,0.22), transparent 50%),
+    radial-gradient(ellipse 45% 50% at 5% 90%, rgba(0,102,255,0.25), transparent 45%),
+    linear-gradient(155deg, #060d1f 0%, #002147 50%, #0a2a5c 100%);
+  color: #fff;
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0; opacity: 0.055; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+.hero-top {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 7mm;
+}
+.brand { display: flex; align-items: center; gap: 3mm; }
+.brand-mark { width: 11mm; height: 11mm; flex-shrink: 0; }
+.brand-word {
+  font-family: 'Manrope', sans-serif; font-size: 21px; font-weight: 800;
+  letter-spacing: -0.04em; line-height: 1;
+}
+.brand-word .lynka { color: #fff; }
+.brand-word .med { color: #00d4ff; }
+.brand-sub {
+  margin-top: 1.2mm; font-size: 7.5px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4);
+}
+.pill {
+  font-size: 8px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #002147; background: #00d4ff; border-radius: 999px; padding: 2mm 3.8mm;
+}
+.hero-copy { position: relative; z-index: 1; max-width: 175mm; }
+.eyebrow {
+  font-size: 9px; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; color: #00d4ff; margin-bottom: 3mm;
+}
+h1 {
+  font-family: 'Manrope', sans-serif; font-size: 26px; font-weight: 800;
+  line-height: 1.1; letter-spacing: -0.035em; color: #fff;
+}
+h1 em { font-style: normal; color: #00d4ff; }
+.lead {
+  margin-top: 3.5mm; font-size: 11.5px; line-height: 1.5;
+  color: rgba(226,232,240,0.88); max-width: 162mm;
+}
+.hero-proof {
+  margin-top: 4mm; display: flex; flex-wrap: wrap; gap: 2.5mm 5mm;
+  font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.72);
+}
+.hero-proof span { display: flex; align-items: center; gap: 1.5mm; }
+.hero-proof span::before { content: '✓'; color: #00d4ff; font-weight: 800; }
+.stats {
+  position: relative; z-index: 2; margin: -7mm 14mm 0;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  background: #fff; border-radius: 12px;
+  box-shadow: 0 14px 40px rgba(0,33,71,0.16); overflow: hidden;
+}
+.stat { padding: 4.5mm 4mm; border-right: 1px solid #e8ecf2; }
+.stat:last-child { border-right: 0; }
+.stat strong {
+  display: block; font-family: 'Manrope', sans-serif;
+  font-size: 17px; font-weight: 800; color: #0066ff; letter-spacing: -0.03em;
+}
+.stat span {
+  display: block; margin-top: 1mm; font-size: 8.5px; font-weight: 600;
+  color: #5c6578; line-height: 1.3;
+}
+.body { padding: 5mm 14mm 0; }
+.hook {
+  background: #fff; border-left: 3.5px solid #00d4ff; border-radius: 0 10px 10px 0;
+  padding: 3.2mm 4.5mm; margin-bottom: 4mm;
+  box-shadow: 0 4px 16px rgba(15,23,42,0.04);
+}
+.hook p {
+  font-family: 'Manrope', sans-serif; font-size: 11.5px; font-weight: 700;
+  color: #002147; line-height: 1.35;
+}
+.hook span { color: #0066ff; }
+.cols { display: grid; grid-template-columns: 1.2fr 0.9fr; gap: 4mm; }
+.left-block {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 4.5mm 5mm;
+}
+.section-label {
+  font-family: 'Manrope', sans-serif; font-size: 8.5px; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #0066ff; margin-bottom: 3mm;
+}
+.benefits { display: flex; flex-direction: column; gap: 3mm; }
+.benefit { display: grid; grid-template-columns: 7mm 1fr; gap: 2.5mm; }
+.benefit-ico {
+  width: 7mm; height: 7mm; border-radius: 7px; background: #eef4ff; color: #0066ff;
+  font-family: 'Manrope', sans-serif; font-size: 9px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.benefit h3 {
+  font-family: 'Manrope', sans-serif; font-size: 11px; font-weight: 800;
+  color: #002147; margin-bottom: 0.6mm;
+}
+.benefit p { font-size: 9.5px; line-height: 1.35; color: #5c6578; }
+.right-col { display: flex; flex-direction: column; gap: 3.2mm; }
+.pricing {
+  background: linear-gradient(150deg, #002147 0%, #0b3a7a 65%, #0052cc 140%);
+  border-radius: 12px; padding: 4.5mm 5mm; color: #fff; flex: 1;
+}
+.pricing-badge {
+  display: inline-block; background: #00d4ff; color: #002147;
+  font-size: 7.5px; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase; border-radius: 999px; padding: 1.2mm 2.8mm; margin-bottom: 2.5mm;
+}
+.pricing h2 { font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 800; margin-bottom: 1mm; }
+.pricing .sub { font-size: 8.5px; color: rgba(255,255,255,0.6); margin-bottom: 2.5mm; }
+.cmp {
+  background: rgba(0,0,0,0.22); border-radius: 8px; padding: 2.5mm 3mm; margin-bottom: 3mm;
+  font-size: 8.5px; line-height: 1.4; color: rgba(255,255,255,0.75);
+}
+.cmp strong { color: #7dd3fc; }
+.price-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 2.2mm 0; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: 10.5px;
+}
+.price-row:last-of-type { border-bottom: 0; }
+.price-row span { color: rgba(255,255,255,0.82); }
+.price-row strong { font-family: 'Manrope', sans-serif; font-size: 15px; font-weight: 800; }
+.was {
+  font-size: 8.5px; color: rgba(255,255,255,0.4); text-decoration: line-through;
+  margin-right: 1.5mm; font-weight: 600;
+}
+.save {
+  display: inline-block; margin-left: 1.5mm; font-size: 7.5px; font-weight: 800;
+  color: #002147; background: #86efac; border-radius: 4px; padding: 0.6mm 1.5mm;
+  vertical-align: middle;
+}
+.price-note { margin-top: 2.5mm; font-size: 8px; line-height: 1.4; color: rgba(255,255,255,0.55); }
+.risk {
+  background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px;
+  padding: 3mm 4mm; font-size: 9.5px; line-height: 1.4; color: #065f46;
+}
+.risk strong { color: #047857; }
+.cta {
+  margin: 4.5mm 14mm 0; display: flex; align-items: center; justify-content: space-between;
+  gap: 4mm; padding: 4mm 5mm; border-radius: 12px; background: #060d1f; color: #fff;
+}
+.cta h3 { font-family: 'Manrope', sans-serif; font-size: 12.5px; font-weight: 800; letter-spacing: -0.02em; }
+.cta p { margin-top: 1mm; font-size: 9px; color: rgba(226,232,240,0.72); max-width: 62mm; }
+.cta-right { display: flex; align-items: center; gap: 4mm; flex-shrink: 0; }
+.qr-row { display: flex; gap: 2.2mm; }
+.qr {
+  display: flex; flex-direction: column; align-items: center; gap: 1mm;
+  text-decoration: none; color: inherit; border: 0; outline: 0; box-shadow: none;
+}
+.qr img {
+  width: 16mm; height: 16mm; border-radius: 4px; background: #fff;
+  padding: 1mm; display: block;
+}
+.qr span {
+  font-size: 7px; font-weight: 800; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(226,232,240,0.7);
+}
+.cta-actions { text-align: right; }
+.cta-btn {
+  display: inline-block; background: #00d4ff; color: #002147;
+  font-family: 'Manrope', sans-serif; font-size: 11.5px; font-weight: 800;
+  padding: 3mm 4.5mm; border-radius: 8px; border: 0; outline: 0;
+  box-shadow: none; text-decoration: none;
+}
+.cta-meta { margin-top: 1.5mm; font-size: 7.5px; color: rgba(226,232,240,0.5); line-height: 1.4; }
+.footer {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 2.8mm 14mm;
+  display: flex; justify-content: space-between; font-size: 7.5px; color: #64748b;
+  background: #e2e8f0; border-top: 1px solid #cbd5e1;
+}
+.footer strong { color: #002147; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="ribbon">Oferta de lanzamiento · Agosto 2026 · 30 días gratis · Precios por debajo del mercado</div>
+    <header class="hero">
+      <div class="hero-top">
+        <div class="brand">
+          
+<svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <path d="M10 8h18c2.2 0 4 1.8 4 4v12.5c0 1.1-.4 2.1-1.2 2.9L18 40.2c-.8.8-1.8 1.2-2.9 1.2H10c-2.2 0-4-1.8-4-4V12c0-2.2 1.8-4 4-4z" fill="#3b82f6"/>
+  <path d="M10 8h18c2.2 0 4 1.8 4 4v2H10V8z" fill="#2563eb"/>
+  <path d="M12 22h6l3-7 4 16 3.5-9H42" stroke="#e0f2fe" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+          <div>
+            <div class="brand-word"><span class="lynka">lynka</span><span class="med">med</span></div>
+            <div class="brand-sub">OSMEN TECH ENTERPRISE</div>
+          </div>
+        </div>
+        <div class="pill">Nutriólogos y clínicas de nutrición</div>
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow">Para nutriólogos que miden adherencia, no solo la primera consulta</p>
+        <h1>Seguimiento nutricional que el paciente también ve — <em>más retención, menos no-shows</em></h1>
+        <p class="lead">Historia nutricional, notas de seguimiento, agenda y portal del paciente. Comparte planes y avances sin mandar PDFs sueltos por WhatsApp.</p>
+        <div class="hero-proof"><span>Historia + seguimiento</span>
+<span>Portal del paciente</span>
+<span>Agenda y recordatorios</span></div>
+      </div>
+    </header>
+    <div class="stats"><div class="stat"><strong>$999</strong><span>Desde / mes<br/>en lanzamiento</span></div>
+<div class="stat"><strong>30 días</strong><span>Gratis · sin tarjeta<br/>ni compromiso</span></div>
+<div class="stat"><strong>15 min</strong><span>Demo con tu<br/>flujo de consulta</span></div>
+<div class="stat"><strong>2 meses</strong><span>Gratis al pagar<br/>anual</span></div></div>
+    <main class="body">
+      <div class="hook"><p>Si el plan se pierde en el chat y no sabes quién regresó, <span>tu consulta vale menos de lo que cobras</span>. LynkaMed ordena el ciclo completo.</p></div>
+      <div class="cols">
+        <div class="left-block">
+          <p class="section-label">Por qué te cambia el consultorio</p>
+          <div class="benefits"><div class="benefit"><div class="benefit-ico">AI</div><div><h3>Dicta la consulta nutricional</h3><p>SOAP / seguimiento más rápido. Más tiempo interpretando, menos tecleando.</p></div></div>
+<div class="benefit"><div class="benefit-ico">01</div><div><h3>Expediente pensado para nutrición</h3><p>Evaluación y seguimiento sin campos de medicina general que no usas.</p></div></div>
+<div class="benefit"><div class="benefit-ico">02</div><div><h3>Portal: el paciente ve su avance</h3><p>Comparte notas y documentos con OTP. Profesional, medible, sin depender del chat.</p></div></div>
+<div class="benefit"><div class="benefit-ico">03</div><div><h3>Empieza solo, crece a clínica</h3><p>Consultorio hoy; mañana colaboras en una clínica — misma cuenta.</p></div></div></div>
+        </div>
+        <div class="right-col">
+          <div class="pricing">
+            <div class="pricing-badge">Lanzamiento · Solo este mes</div>
+            <h2>Precio que gana la comparación</h2>
+            <p class="sub">Empieza gratis. Quédate con tarifa de lanzamiento.</p>
+            <div class="cmp">Suites médicas genéricas te cobran <strong>$1,800–$3,500+/mes</strong> por funciones que no usas. LynkaMed nutrición: <strong>$999/mes</strong> (antes $1,299) con portal incluido.</div>
+            <div class="price-row"><span>Consultorio de nutrición<br/><small style="opacity:.65;font-size:8px">lanzamiento</small></span><div><span class="was">$1,299</span><strong>$999</strong><span class="save">OFERTA</span></div></div>
+<div class="price-row"><span>Clínica / multi-especialidad<br/><small style="opacity:.65;font-size:8px">si combinas módulos</small></span><div><strong>$1,299+</strong></div></div>
+            <p class="price-note">Anual = 2 meses gratis · Sin contrato mínimo · Cancela cuando quieras</p>
+          </div>
+          <div class="risk"><strong>Cero riesgo:</strong> 30 días gratis, sin tarjeta. Si no te ahorra tiempo en la primera semana, cancelas.</div>
+        </div>
+      </div>
+    </main>
+    <section class="cta">
+      <div>
+        <h3>¿Quieres ver historia + portal en 15 minutos?</h3>
+        <p>Demo corta. Te mostramos seguimiento y cómo lo ve el paciente.</p>
+      </div>
+      <div class="cta-right">
+        <div class="qr-row">
+          <a class="qr" href="https://calendly.com/osnayama8/30min">
+            <img src="qr/qr-demo.png" alt="QR Demo" />
+            <span>Demo</span>
+          </a>
+          <a class="qr" href="https://app.lynkamed.mx/registro">
+            <img src="qr/qr-app.png" alt="QR App" />
+            <span>App</span>
+          </a>
+          <a class="qr" href="https://wa.me/525562297133">
+            <img src="qr/qr-whatsapp.png" alt="QR WhatsApp" />
+            <span>WhatsApp</span>
+          </a>
+        </div>
+        <div class="cta-actions">
+          <a class="cta-btn" href="https://calendly.com/osnayama8/30min">Agendar Demo (15 min) →</a>
+          <div class="cta-meta">Escanea o escribe · +52 55 6229 7133<br/>app.lynkamed.mx/registro · ventas@lynkamed.mx</div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div><strong>LynkaMed</strong> · OSMEN TECH ENTERPRISE · NOM</div>
+      <div>Versión Nutricion · Agosto 2026</div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>LynkaMed Paciente — Flyer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 210mm; height: 297mm;
+      font-family: 'Figtree', system-ui, sans-serif;
+      color: #0f172a; background: #fff;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      width: 210mm; height: 297mm;
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(ellipse 80% 50% at 100% 0%, rgba(0,212,255,0.12), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 0% 100%, rgba(30,86,168,0.08), transparent 50%),
+        #f4f7fb;
+    }
+
+    .top {
+      padding: 16mm 18mm 10mm;
+      background: linear-gradient(155deg, #060d1f 0%, #002147 55%, #0a2a5c 100%);
+      color: #fff;
+      position: relative;
+    }
+    .top::after {
+      content: '';
+      position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .brand {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 3.5mm;
+      margin-bottom: 10mm;
+    }
+    .brand-mark { width: 12mm; height: 12mm; }
+    .brand-word {
+      font-family: 'Manrope', sans-serif;
+      font-size: 24px; font-weight: 800; letter-spacing: -0.04em; line-height: 1;
+    }
+    .brand-word .med { color: #00d4ff; }
+    .brand-sub {
+      margin-top: 1.5mm;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
+    }
+
+    .eyebrow {
+      position: relative; z-index: 1;
+      font-size: 11px; font-weight: 800; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #00d4ff; margin-bottom: 4mm;
+    }
+    h1 {
+      position: relative; z-index: 1;
+      font-family: 'Manrope', sans-serif;
+      font-size: 34px; font-weight: 800;
+      line-height: 1.12; letter-spacing: -0.035em;
+      max-width: 160mm;
+    }
+    h1 em { font-style: normal; color: #00d4ff; }
+    .lead {
+      position: relative; z-index: 1;
+      margin-top: 5mm;
+      font-size: 14px; line-height: 1.55;
+      color: rgba(226,232,240,0.88);
+      max-width: 155mm;
+    }
+
+    .body { padding: 11mm 18mm 0; }
+
+    .benefits {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4.5mm;
+      margin-bottom: 10mm;
+    }
+    .benefit {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 5mm 5.5mm;
+    }
+    .benefit strong {
+      display: block;
+      font-family: 'Manrope', sans-serif;
+      font-size: 13.5px; font-weight: 800; color: #002147;
+      margin-bottom: 1.5mm;
+    }
+    .benefit p { font-size: 12px; line-height: 1.4; color: #5c6578; }
+
+    .download {
+      background: #fff;
+      border: 1.5px dashed #94a3b8;
+      border-radius: 16px;
+      padding: 7mm 7mm 6mm;
+      text-align: center;
+    }
+    .download h2 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 16px; font-weight: 800; color: #002147;
+      margin-bottom: 2mm;
+    }
+    .download .hint {
+      font-size: 11.5px; color: #64748b; margin-bottom: 6mm;
+    }
+
+    .stores {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6mm;
+      max-width: 140mm; margin: 0 auto;
+    }
+    .store {
+      display: flex; flex-direction: column; align-items: center; gap: 2.5mm;
+    }
+    .qr-slot {
+      width: 32mm; height: 32mm;
+      border-radius: 10px;
+      background: #f8fafc;
+      border: 1.5px dashed #cbd5e1;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .qr-slot img {
+      width: 100%; height: 100%; object-fit: contain;
+      display: none; /* se muestra cuando agregues el QR */
+    }
+    .qr-slot .placeholder {
+      font-size: 9px; font-weight: 700; color: #94a3b8;
+      text-align: center; line-height: 1.3; padding: 2mm;
+    }
+    .store-label {
+      font-family: 'Manrope', sans-serif;
+      font-size: 12px; font-weight: 800; color: #002147;
+    }
+    .store-link {
+      font-size: 9px; color: #64748b; word-break: break-all;
+      min-height: 12px;
+    }
+    .store-link:empty::before {
+      content: 'Link de descarga aquí';
+      color: #94a3b8; font-style: italic;
+    }
+
+    .note {
+      margin-top: 5mm;
+      font-size: 10.5px; color: #64748b; line-height: 1.4;
+    }
+    .note code {
+      font-family: 'Figtree', monospace;
+      font-size: 9.5px;
+      background: #f1f5f9;
+      padding: 0.5mm 1.5mm;
+      border-radius: 4px;
+      color: #475569;
+    }
+
+    .footer {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 4mm 18mm;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 9px; color: #64748b;
+      background: #e8eef5;
+      border-top: 1px solid #d5deea;
+    }
+    .footer strong { color: #002147; }
+    .free {
+      background: #00d4ff; color: #002147;
+      font-family: 'Manrope', sans-serif;
+      font-size: 9px; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 1.8mm 3.5mm; border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="top">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M10 8h18c2.2 0 4 1.8 4 4v12.5c0 1.1-.4 2.1-1.2 2.9L18 40.2c-.8.8-1.8 1.2-2.9 1.2H10c-2.2 0-4-1.8-4-4V12c0-2.2 1.8-4 4-4z" fill="#3b82f6"/>
+          <path d="M10 8h18c2.2 0 4 1.8 4 4v2H10V8z" fill="#2563eb"/>
+          <path d="M12 22h6l3-7 4 16 3.5-9H42" stroke="#e0f2fe" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <div class="brand-word"><span class="lynka">lynka</span><span class="med">med</span></div>
+          <div class="brand-sub">App para pacientes</div>
+        </div>
+      </div>
+
+      <p class="eyebrow">Tu salud, en el celular</p>
+      <h1>Agenda citas, guarda tus documentos y lleva tu <em>pasaporte de salud</em></h1>
+      <p class="lead">
+        Una sola app para conectarte con tu clínica, encontrar atención cerca de ti
+        y tener tu información lista cuando más la necesitas.
+      </p>
+    </header>
+
+    <main class="body">
+      <div class="benefits">
+        <div class="benefit">
+          <strong>Agenda fácil</strong>
+          <p>Pide, confirma o cambia citas sin estar en WhatsApp todo el día.</p>
+        </div>
+        <div class="benefit">
+          <strong>Pasaporte de salud</strong>
+          <p>Tu QR con datos de emergencia. Escaneable cuando importa.</p>
+        </div>
+        <div class="benefit">
+          <strong>Documentos a la mano</strong>
+          <p>Estudios, presupuestos y archivos de tu clínica en un solo lugar.</p>
+        </div>
+        <div class="benefit">
+          <strong>Busca y vincula</strong>
+          <p>Encuentra clínicas cerca o únete a la tuya con un código QR.</p>
+        </div>
+      </div>
+
+      <!--
+        CUANDO TENGAS LOS LINKS DE LA TIENDA:
+        1. Pon las URLs en los <a class="store-link"> de abajo
+        2. Genera QR (o usa los PNG) y descomenta las <img>
+        3. Oculta el .placeholder con display:none
+        4. Vuelve a exportar el PDF
+      -->
+      <div class="download">
+        <h2>Descárgala gratis</h2>
+        <p class="hint">Escanea el código de tu teléfono · iPhone o Android</p>
+
+        <div class="stores">
+          <div class="store">
+            <div class="qr-slot" id="qr-ios">
+              <!-- <img src="qr/qr-appstore.png" alt="App Store" /> -->
+              <span class="placeholder">QR<br/>App Store</span>
+            </div>
+            <div class="store-label">App Store</div>
+            <!-- Pegar link iOS aquí cuando esté listo -->
+            <a class="store-link" id="link-ios" href="#"></a>
+          </div>
+
+          <div class="store">
+            <div class="qr-slot" id="qr-android">
+              <!-- <img src="qr/qr-playstore.png" alt="Google Play" /> -->
+              <span class="placeholder">QR<br/>Google Play</span>
+            </div>
+            <div class="store-label">Google Play</div>
+            <!-- Pegar link Android aquí cuando esté listo -->
+            <a class="store-link" id="link-android" href="#"></a>
+          </div>
+        </div>
+
+        <p class="note">
+          Mientras aprueban las tiendas, pide el acceso en tu clínica LynkaMed
+          o en <code>lynkamed.mx</code>
+        </p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div><strong>LynkaMed</strong> · Gratis para pacientes</div>
+      <div class="free">100% gratis</div>
+    </footer>
+  </div>
+</body>
+</html>

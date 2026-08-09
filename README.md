@@ -1,17 +1,59 @@
-# React + Vite
+# LynkaMed Landing
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio de marketing de [LynkaMed](https://lynkamed.mx) — React + Vite + Tailwind.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19 + React Router
+- Vite 8 + Tailwind CSS 4
+- Deploy: GitHub Actions → Hostinger (SCP)
 
-## React Compiler
+## Desarrollo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm ci
+npm run dev
+```
 
-## Expanding the ESLint configuration
+```bash
+npm run lint
+npm run build
+npm run preview
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# lynkamed-landing
+## CI/CD
+
+| Workflow | Cuándo | Qué hace |
+|----------|--------|----------|
+| **CI** | push/PR a `main` | `npm ci` → lint → build |
+| **Deploy Landing** | push a `main` o manual | lint + build + SCP de `dist/` |
+
+### Secrets (repo → Settings → Actions)
+
+| Secret | Ejemplo |
+|--------|---------|
+| `SSH_HOST` | IP o hostname Hostinger |
+| `SSH_USER` | `u758088648` |
+| `SSH_PRIVATE_KEY` | clave privada PEM |
+| `SSH_PORT` | `22` (opcional) |
+| `DEPLOY_PATH` | `/home/u…/domains/lynkamed.mx/public_html` |
+
+### Video demo
+
+`public/lynkamed.mp4` supera el límite de GitHub (~149 MB). No se versiona.
+
+1. Súbelo **una vez** al `DEPLOY_PATH` del servidor como `lynkamed.mp4`
+2. El deploy usa `rm: false`, así que no se elimina en deploys siguientes
+
+## Estructura
+
+```
+src/          páginas y componentes de la landing
+public/       assets estáticos (logo, imágenes, favicon)
+sales/        material comercial (onepagers, flyers) — no va al build web
+.github/      CI + deploy
+```
+
+## Org
+
+`OsmenTech/lynkamed-landing`

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>LynkaMed — Guía de ventas (clínicas dentales)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: 'Figtree', system-ui, sans-serif;
+  color: #0f172a; background: #fff;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+a { color: inherit; text-decoration: none; }
+.page {
+  width: 210mm; height: 297mm; position: relative; overflow: hidden;
+  background: #f8fafc; page-break-after: always;
+}
+.page:last-child { page-break-after: auto; }
+.ribbon {
+  background: #00d4ff; color: #002147; text-align: center;
+  font-family: 'Manrope', sans-serif; font-size: 9px; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase; padding: 2.4mm 4mm;
+}
+.hero {
+  padding: 8mm 14mm 9mm;
+  background: linear-gradient(155deg, #060d1f 0%, #002147 55%, #0a2a5c 100%);
+  color: #fff;
+}
+.hero-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5mm; }
+.brand-word { font-family: 'Manrope', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -0.04em; }
+.brand-word .med { color: #00d4ff; }
+.pill {
+  font-size: 8px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #002147; background: #00d4ff; border-radius: 999px; padding: 2mm 3.5mm;
+}
+h1 {
+  font-family: 'Manrope', sans-serif; font-size: 22px; font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.03em;
+}
+h1 em { font-style: normal; color: #00d4ff; }
+.lead { margin-top: 2.5mm; font-size: 11px; line-height: 1.45; color: rgba(226,232,240,0.88); max-width: 170mm; }
+.body { padding: 6mm 14mm 10mm; }
+h2 {
+  font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800;
+  letter-spacing: 0.04em; text-transform: uppercase; color: #002147;
+  margin: 4.5mm 0 2.5mm; padding-bottom: 1.2mm;
+  border-bottom: 2px solid #00d4ff; display: inline-block;
+}
+h2:first-child { margin-top: 0; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; }
+.card {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 3mm;
+  padding: 3.5mm 4mm; box-shadow: 0 1px 0 rgba(15,23,42,0.03);
+}
+.card h3 {
+  font-family: 'Manrope', sans-serif; font-size: 11px; font-weight: 800;
+  color: #002147; margin-bottom: 1.5mm;
+}
+.card p, .card li { font-size: 9.5px; line-height: 1.4; color: #334155; }
+.card ul { padding-left: 4mm; margin-top: 1mm; }
+.card li { margin-bottom: 0.8mm; }
+.quote {
+  background: #002147; color: #fff; border-radius: 3mm; padding: 3.5mm 4mm;
+  font-size: 10px; line-height: 1.45; margin: 2mm 0;
+}
+.quote strong { color: #00d4ff; }
+.script {
+  background: #eff6ff; border-left: 3px solid #0066ff; border-radius: 0 2.5mm 2.5mm 0;
+  padding: 3mm 3.5mm; font-size: 9.5px; line-height: 1.45; color: #1e293b; margin: 2mm 0;
+}
+.script .label {
+  font-size: 8px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #0066ff; margin-bottom: 1mm;
+}
+table {
+  width: 100%; border-collapse: collapse; font-size: 9.5px; margin-top: 2mm;
+  background: #fff; border-radius: 2.5mm; overflow: hidden;
+}
+th, td { border: 1px solid #e2e8f0; padding: 2.2mm 2.8mm; text-align: left; vertical-align: top; }
+th { background: #002147; color: #fff; font-weight: 700; font-size: 9px; letter-spacing: 0.04em; text-transform: uppercase; }
+td strong { color: #002147; }
+.meta {
+  margin-top: 4mm; display: flex; gap: 3mm; flex-wrap: wrap;
+}
+.meta span {
+  font-size: 8.5px; font-weight: 700; color: #475569;
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 999px; padding: 1.5mm 3mm;
+}
+.footer {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 2.5mm 14mm; font-size: 8px; color: #64748b;
+  border-top: 1px solid #e2e8f0; background: #fff;
+}
+.num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 5mm; height: 5mm; border-radius: 999px; background: #0066ff; color: #fff;
+  font-size: 8px; font-weight: 800; margin-right: 1.5mm; flex-shrink: 0;
+}
+.step { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; font-size: 9.5px; line-height: 1.4; color: #334155; }
+.step strong { color: #002147; }
+.warn {
+  background: #fff7ed; border: 1px solid #fed7aa; border-radius: 2.5mm;
+  padding: 2.5mm 3.5mm; font-size: 9.5px; color: #9a3412; margin-top: 2mm;
+}
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <div class="page">
+    <div class="ribbon">Uso interno · Ventas presenciales · No es material para el cliente</div>
+    <header class="hero">
+      <div class="hero-top">
+        <div class="brand-word"><span class="lynka">Lynka</span><span class="med">Med</span></div>
+        <div class="pill">Guía de ventas · Dental</div>
+      </div>
+      <h1>Cómo vender en clínica: <em>visita, one-pager y demo</em></h1>
+      <p class="lead">
+        Canal principal: 2–3 clínicas dentales por semana, en persona.
+        El one-pager dental es el leave-behind. Calendly cierra la demo. WhatsApp solo como seguimiento cálido.
+      </p>
+      <div class="meta">
+        <span>One-pager: LynkaMed-OnePager-Dental.pdf</span>
+        <span>Calendly: calendly.com/osnayama8/30min</span>
+        <span>Oferta: $1,699/mes · anual 10 meses (2 gratis) · migración incluida en lanzamiento</span>
+      </div>
+    </header>
+
+    <div class="body">
+      <h2>1. Objetivo de cada visita</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Sí cuenta como visita exitosa</h3>
+          <ul>
+            <li>PDF en manos del decisor (dueño / admin / doctor)</li>
+            <li>Nombre + WhatsApp o correo del decisor</li>
+            <li>Demo agendada <strong>o</strong> follow-up con fecha</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>No es el objetivo</h3>
+          <ul>
+            <li>Cerrar contrato en recepción</li>
+            <li>Tour de 20 módulos</li>
+            <li>WhatsApp frío a clínicas que no te conocen</li>
+            <li>Hablar de “plataforma completa”</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>2. Kit antes de salir</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Llevar</h3>
+          <ul>
+            <li>2–3 copias del one-pager dental (impreso)</li>
+            <li>QR a Calendly (en el PDF o tarjeta)</li>
+            <li>Celular cargado + demo dental lista (odontograma, presupuesto, agenda)</li>
+            <li>Lista de 5 clínicas del día (zona + horarios)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Cuándo ir</h3>
+          <ul>
+            <li>Mejor: martes–jueves, 10:00–13:00 o 16:00–18:00</li>
+            <li>Evitar: sábados saturados, hora pico de pacientes</li>
+            <li>Si hay sala de espera llena: deja PDF + pide contacto del admin</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>3. Guion en recepción (30–60 seg)</h2>
+      <div class="script">
+        <div class="label">Apertura</div>
+        “Buenas, soy de LynkaMed. Traemos un sistema de expediente dental con odontograma, presupuestos, agenda y portal del paciente.
+        ¿Puedo dejarle esto a la doctora / al administrador y pedirle 15 minutos esta semana o la que entra?”
+      </div>
+      <div class="grid-2">
+        <div class="script">
+          <div class="label">Si dicen “déjalo”</div>
+          “Perfecto. ¿Con quién lo dejo y un WhatsApp para confirmar solo la cita? No voy a spamear.”
+        </div>
+        <div class="script">
+          <div class="label">Si hay 2 minutos con el decisor</div>
+          Enseña 1 pantalla (odontograma o presupuesto). Cierra: “¿Demo de 15 min martes o jueves?” → Calendly ahí mismo.
+        </div>
+      </div>
+
+      <h2>4. Dos conversiones (elige según lo que encuentres)</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>A) Ya tienen software</h3>
+          <p>No ataques su herramienta. Compara 3 cosas: odontograma, presupuesto y portal del paciente.</p>
+          <ul>
+            <li>“¿Qué les duele hoy de [software actual]?”</li>
+            <li>Demo lado a lado en 15 min</li>
+            <li>Migración acompañada en lanzamiento (sin costo extra)</li>
+            <li>Piloto: conviven 30 días si hace falta</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>B) Arrancan desde cero</h3>
+          <p>Excel / WhatsApp / agenda física. Vende orden, no “features”.</p>
+          <ul>
+            <li>“Hoy ¿dónde vive el odontograma y el presupuesto?”</li>
+            <li>Arranque en días, no en meses</li>
+            <li>Yo configuro la primera semana</li>
+            <li>30 días gratis + precio de lanzamiento</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>5. Pitch de 20 segundos</h2>
+      <div class="quote">
+        “LynkaMed es expediente dental + odontograma + presupuestos + portal.
+        Si ya tienen sistema, migran con acompañamiento. Si arrancan de cero, ordenan el consultorio en días.
+        <strong>Clínica $1,699/mes</strong> · anual pagas 10 (2 meses gratis). Yo los acompaño.”
+      </div>
+
+      <div class="warn">
+        <strong>Regla:</strong> cada lead = 1 especialidad (dental) + 1 one-pager + 1 CTA Calendly. Sin eso, no hubo visita.
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div><strong>LynkaMed</strong> · Guía interna de ventas</div>
+      <div>Página 1 / 2 · Agosto 2026</div>
+    </footer>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page">
+    <div class="ribbon">Demo · Objeciones · Seguimiento · Ritmo semanal</div>
+    <div class="body" style="padding-top: 8mm;">
+      <h2>6. Demo de 15 minutos (solo dental)</h2>
+      <div class="card" style="margin-bottom: 3mm;">
+        <div class="step"><span class="num">1</span><div><strong>0–2 min</strong> — Confirma su dolor: “¿Hoy cómo hacen odontograma / presupuesto / seguimiento?”</div></div>
+        <div class="step"><span class="num">2</span><div><strong>2–8 min</strong> — Odontograma en vivo + presupuesto que el paciente entiende</div></div>
+        <div class="step"><span class="num">3</span><div><strong>8–12 min</strong> — Agenda + “el paciente lo ve en portal/app”</div></div>
+        <div class="step"><span class="num">4</span><div><strong>12–15 min</strong> — Precio de lanzamiento + piloto + agendar onboarding</div></div>
+      </div>
+      <div class="script">
+        <div class="label">Cierre de demo</div>
+        “Si les late: piloto en lanzamiento $1,699/mes. Si pagan anual, 2 meses gratis.
+        Si migran de otro software, yo los acompaño. Si parten de cero, también.
+        ¿Empezamos esta semana o la que entra?”
+      </div>
+
+      <h2>7. Objeciones (migración y precio)</h2>
+      <table>
+        <thead>
+          <tr><th style="width:32%">Objeción</th><th>Respuesta</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>“Ya tenemos software”</strong></td>
+            <td>Perfecto. En 15 min comparamos odontograma + presupuesto + portal. Si no gana, no hay presión. Si gana, migramos juntos.</td>
+          </tr>
+          <tr>
+            <td><strong>“Migrar es un rollo”</strong></td>
+            <td>En lanzamiento la migración va incluida. Arrancamos con lo crítico (pacientes activos + agenda) y el resto por fases.</td>
+          </tr>
+          <tr>
+            <td><strong>“Está caro”</strong></td>
+            <td>$1,699/mes lanzamiento. Anual = 10 meses (2 gratis). Un no-show o presupuesto perdido suele costar más.</td>
+          </tr>
+          <tr>
+            <td><strong>“No tenemos tiempo”</strong></td>
+            <td>Demo 15 min. Arranque lo hago yo. No migran solos ni desde cero solos.</td>
+          </tr>
+          <tr>
+            <td><strong>“Lo vemos después”</strong></td>
+            <td>Claro. ¿Te dejo el one-pager y te escribo el jueves solo para fijar 15 min?</td>
+          </tr>
+          <tr>
+            <td><strong>“Mandan WhatsApp frío”</strong></td>
+            <td>No. Solo visito y sigo a quien ya recibió el material.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>8. Seguimiento (WhatsApp cálido — no frío)</h2>
+      <div class="script">
+        <div class="label">Mismo día o al día siguiente</div>
+        “Hola [Nombre], fui a [Clínica] el [día]. Le dejé el one-pager de LynkaMed dental (odontograma, presupuestos y portal).
+        ¿Le acomoda una demo de 15 min el [opción A] o el [opción B]? Aquí el calendario: https://calendly.com/osnayama8/30min”
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Cadencia</h3>
+          <ul>
+            <li>Día 0: visita + PDF</li>
+            <li>Día 1: WhatsApp cálido</li>
+            <li>Día 4: 2º follow-up corto</li>
+            <li>Día 10: cierre amable (“¿lo dejamos para el próximo mes?”)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>No hacer</h3>
+          <ul>
+            <li>Mensajes masivos a clínicas desconocidas</li>
+            <li>Más de 3 follow-ups sin respuesta</li>
+            <li>Prometer módulos que no vas a mostrar en demo</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>9. Semana tipo + métricas</h2>
+      <table>
+        <thead>
+          <tr><th>Día</th><th>Acción</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Lunes</strong></td><td>1–2 visitas mañana · anotar contactos</td></tr>
+          <tr><td><strong>Mar / Mié</strong></td><td>Demos Calendly de visitas previas · onboarding si alguien dijo sí</td></tr>
+          <tr><td><strong>Jueves</strong></td><td>1 visita más · follow-ups</td></tr>
+          <tr><td><strong>Viernes</strong></td><td>Seguimientos + preparar zona de la siguiente semana</td></tr>
+        </tbody>
+      </table>
+      <div class="grid-2" style="margin-top: 3mm;">
+        <div class="card">
+          <h3>Meta 30 días</h3>
+          <ul>
+            <li>~10–12 clínicas visitadas</li>
+            <li>8 demos agendadas</li>
+            <li>3 pilots activos</li>
+            <li>1 caso de uso escrito (aunque sea corto)</td>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Oferta en boca</h3>
+          <ul>
+            <li>Clínica dental: <strong>$1,699/mes</strong> (antes $1,999)</li>
+            <li>Anual: <strong>$16,990</strong> = 10 meses · <strong>2 gratis</strong></li>
+            <li>Migración incluida en lanzamiento · piloto acompañado</li>
+            <li>CTA: Calendly 15 min</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quote" style="margin-top: 3.5mm;">
+        Checklist de bolsillo: <strong>PDF → decisor → contacto → Calendly</strong>.
+        Si falta uno, la visita no terminó.
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div>ventas@lynkamed.mx · +52 55 6229 7133 · app.lynkamed.mx</div>
+      <div>Página 2 / 2 · Agosto 2026</div>
+    </footer>
+  </div>
+
+</body>
+</html>

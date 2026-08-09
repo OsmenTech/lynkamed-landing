@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>LynkaMed — One Pager Ventas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 210mm; height: 297mm;
+      font-family: 'Figtree', system-ui, sans-serif;
+      color: #0f172a; background: #fff;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .page {
+      width: 210mm; height: 297mm;
+      position: relative; overflow: hidden;
+      background: #f1f5f9;
+    }
+
+    /* Urgency ribbon */
+    .ribbon {
+      background: #00d4ff;
+      color: #002147;
+      text-align: center;
+      font-family: 'Manrope', sans-serif;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2.2mm 4mm;
+    }
+
+    .hero {
+      position: relative;
+      padding: 8mm 14mm 14mm;
+      background:
+        radial-gradient(ellipse 65% 70% at 95% 0%, rgba(0,212,255,0.22), transparent 50%),
+        radial-gradient(ellipse 45% 50% at 5% 90%, rgba(0,102,255,0.25), transparent 45%),
+        linear-gradient(155deg, #060d1f 0%, #002147 50%, #0a2a5c 100%);
+      color: #fff;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0; opacity: 0.055;
+      background-image:
+        linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
+      background-size: 18px 18px;
+      pointer-events: none;
+    }
+    .hero-top {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 7mm;
+    }
+    .brand { display: flex; align-items: center; gap: 3mm; }
+    .brand-mark { width: 11mm; height: 11mm; flex-shrink: 0; }
+    .brand-word {
+      font-family: 'Manrope', sans-serif;
+      font-size: 21px; font-weight: 800;
+      letter-spacing: -0.04em; line-height: 1;
+    }
+    .brand-word .lynka { color: #fff; }
+    .brand-word .med { color: #00d4ff; }
+    .brand-sub {
+      margin-top: 1.2mm; font-size: 7.5px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .pill {
+      font-size: 8px; font-weight: 800; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #002147;
+      background: #00d4ff; border-radius: 999px;
+      padding: 2mm 3.8mm;
+    }
+    .hero-copy { position: relative; z-index: 1; max-width: 172mm; }
+    .eyebrow {
+      font-size: 9px; font-weight: 800; letter-spacing: 0.16em;
+      text-transform: uppercase; color: #00d4ff; margin-bottom: 3mm;
+    }
+    h1 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 27px; font-weight: 800;
+      line-height: 1.1; letter-spacing: -0.035em; color: #fff;
+    }
+    h1 em { font-style: normal; color: #00d4ff; }
+    .lead {
+      margin-top: 3.5mm; font-size: 11.5px; line-height: 1.5;
+      color: rgba(226,232,240,0.85); max-width: 158mm;
+    }
+    .hero-proof {
+      margin-top: 4mm;
+      display: flex; flex-wrap: wrap; gap: 2.5mm 5mm;
+      font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.7);
+    }
+    .hero-proof span { display: flex; align-items: center; gap: 1.5mm; }
+    .hero-proof span::before {
+      content: '✓'; color: #00d4ff; font-weight: 800;
+    }
+
+    .stats {
+      position: relative; z-index: 2;
+      margin: -7mm 14mm 0;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      background: #fff; border-radius: 12px;
+      box-shadow: 0 14px 40px rgba(0,33,71,0.16);
+      overflow: hidden;
+    }
+    .stat {
+      padding: 4.5mm 4mm; border-right: 1px solid #e8ecf2;
+    }
+    .stat:last-child { border-right: 0; }
+    .stat strong {
+      display: block; font-family: 'Manrope', sans-serif;
+      font-size: 18px; font-weight: 800; color: #0066ff;
+      letter-spacing: -0.03em;
+    }
+    .stat span {
+      display: block; margin-top: 1mm;
+      font-size: 8.5px; font-weight: 600; color: #5c6578; line-height: 1.3;
+    }
+
+    .body { padding: 5.5mm 14mm 0; }
+
+    .hook {
+      background: #fff;
+      border-left: 3.5px solid #00d4ff;
+      border-radius: 0 10px 10px 0;
+      padding: 3.5mm 4.5mm;
+      margin-bottom: 4.5mm;
+      box-shadow: 0 4px 16px rgba(15,23,42,0.04);
+    }
+    .hook p {
+      font-family: 'Manrope', sans-serif;
+      font-size: 12px; font-weight: 700; color: #002147; line-height: 1.35;
+    }
+    .hook span { color: #0066ff; }
+
+    .cols {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 4mm;
+    }
+
+    .left-block {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 4.5mm 5mm;
+    }
+    .section-label {
+      font-family: 'Manrope', sans-serif;
+      font-size: 8.5px; font-weight: 800; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #0066ff; margin-bottom: 3mm;
+    }
+    .benefits { display: flex; flex-direction: column; gap: 3mm; }
+    .benefit {
+      display: grid; grid-template-columns: 7mm 1fr; gap: 2.5mm;
+    }
+    .benefit-ico {
+      width: 7mm; height: 7mm; border-radius: 7px;
+      background: #eef4ff; color: #0066ff;
+      font-family: 'Manrope', sans-serif;
+      font-size: 10px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .benefit h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px; font-weight: 800; color: #002147; margin-bottom: 0.6mm;
+    }
+    .benefit p { font-size: 9.5px; line-height: 1.35; color: #5c6578; }
+
+    .right-col { display: flex; flex-direction: column; gap: 3.5mm; }
+
+    .pricing {
+      background: linear-gradient(150deg, #002147 0%, #0b3a7a 65%, #0052cc 140%);
+      border-radius: 12px; padding: 4.5mm 5mm; color: #fff;
+      flex: 1;
+    }
+    .pricing-badge {
+      display: inline-block;
+      background: #00d4ff; color: #002147;
+      font-size: 7.5px; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; border-radius: 999px;
+      padding: 1.2mm 2.8mm; margin-bottom: 2.5mm;
+    }
+    .pricing h2 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px; font-weight: 800; margin-bottom: 1mm;
+    }
+    .pricing .sub {
+      font-size: 8.5px; color: rgba(255,255,255,0.6); margin-bottom: 3mm;
+    }
+    .price-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 2.2mm 0; border-bottom: 1px solid rgba(255,255,255,0.12);
+      font-size: 10.5px;
+    }
+    .price-row:last-of-type { border-bottom: 0; }
+    .price-row span { color: rgba(255,255,255,0.82); }
+    .price-row strong {
+      font-family: 'Manrope', sans-serif;
+      font-size: 14px; font-weight: 800;
+    }
+    .was {
+      font-size: 8.5px; color: rgba(255,255,255,0.4);
+      text-decoration: line-through; margin-right: 1.5mm; font-weight: 600;
+    }
+    .price-note {
+      margin-top: 2.5mm; font-size: 8px; line-height: 1.4;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .risk {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 10px;
+      padding: 3mm 4mm;
+      font-size: 9.5px; line-height: 1.4; color: #065f46;
+    }
+    .risk strong { color: #047857; }
+
+    .cta {
+      margin: 4.5mm 14mm 0;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 4mm; padding: 4mm 5mm;
+      border-radius: 12px; background: #060d1f; color: #fff;
+    }
+    .cta h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 12.5px; font-weight: 800; letter-spacing: -0.02em;
+    }
+    .cta p { margin-top: 1mm; font-size: 9px; color: rgba(226,232,240,0.72); max-width: 62mm; }
+    .cta-right { display: flex; align-items: center; gap: 4mm; flex-shrink: 0; }
+    .qr-row { display: flex; gap: 2.2mm; }
+    .qr {
+      display: flex; flex-direction: column; align-items: center; gap: 1mm;
+      text-decoration: none; color: inherit; border: 0; outline: 0; box-shadow: none;
+    }
+    .qr img {
+      width: 16mm; height: 16mm; border-radius: 4px; background: #fff;
+      padding: 1mm; display: block;
+    }
+    .qr span {
+      font-size: 7px; font-weight: 800; letter-spacing: 0.06em;
+      text-transform: uppercase; color: rgba(226,232,240,0.7);
+    }
+    .cta-actions { text-align: right; }
+    .cta-btn {
+      display: inline-block;
+      background: #00d4ff; color: #002147;
+      font-family: 'Manrope', sans-serif;
+      font-size: 11.5px; font-weight: 800;
+      padding: 3mm 4.5mm; border-radius: 8px;
+      text-decoration: none;
+      border: 0; outline: 0; box-shadow: none;
+    }
+    .cta-meta {
+      margin-top: 1.5mm; font-size: 7.5px;
+      color: rgba(226,232,240,0.5); line-height: 1.4;
+    }
+
+    .footer {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 2.8mm 14mm;
+      display: flex; justify-content: space-between;
+      font-size: 7.5px; color: #64748b;
+      background: #e2e8f0; border-top: 1px solid #cbd5e1;
+    }
+    .footer strong { color: #002147; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="ribbon">Oferta de lanzamiento · Agosto 2026 · 30 días gratis · Precios especiales por tiempo limitado</div>
+
+    <header class="hero">
+      <div class="hero-top">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M10 8h18c2.2 0 4 1.8 4 4v12.5c0 1.1-.4 2.1-1.2 2.9L18 40.2c-.8.8-1.8 1.2-2.9 1.2H10c-2.2 0-4-1.8-4-4V12c0-2.2 1.8-4 4-4z" fill="#3b82f6"/>
+            <path d="M10 8h18c2.2 0 4 1.8 4 4v2H10V8z" fill="#2563eb"/>
+            <path d="M12 22h6l3-7 4 16 3.5-9H42" stroke="#e0f2fe" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <div class="brand-word"><span class="lynka">lynka</span><span class="med">med</span></div>
+            <div class="brand-sub">OSMEN TECH ENTERPRISE</div>
+          </div>
+        </div>
+        <div class="pill">Hecho en México · NOM</div>
+      </div>
+
+      <div class="hero-copy">
+        <p class="eyebrow">Deja de pelear con Excel, WhatsApp y 3 sistemas distintos</p>
+        <h1>El expediente que se adapta a <em>tu especialidad</em> — y te hace cobrar más ordenado</h1>
+        <p class="lead">
+          LynkaMed une agenda, expediente, recetas, caja y portal del paciente.
+          Menos tiempo documentando. Más pacientes atendidos. Menos dinero perdido en el mostrador.
+        </p>
+        <div class="hero-proof">
+          <span>Dental · Cardio · Rehab · Nutrición · Psico · Fisio · General</span>
+          <span>Sin tarjeta para empezar</span>
+          <span>Cancela cuando quieras</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><strong>+30</strong><span>Expedientes por<br/>especialidad</span></div>
+      <div class="stat"><strong>30 días</strong><span>Gratis · sin tarjeta<br/>ni compromiso</span></div>
+      <div class="stat"><strong>15 min</strong><span>Demo · ves tu<br/>flujo real</span></div>
+      <div class="stat"><strong>2 meses</strong><span>Gratis si pagas<br/>anual</span></div>
+    </div>
+
+    <main class="body">
+      <div class="hook">
+        <p>Un cardiólogo no documenta como un dentista. <span>¿Por qué usar el mismo software genérico?</span> LynkaMed es el ECE que habla el idioma de tu práctica.</p>
+      </div>
+
+      <div class="cols">
+        <div class="left-block">
+          <p class="section-label">Lo que cierra la venta</p>
+          <div class="benefits">
+            <div class="benefit">
+              <div class="benefit-ico">AI</div>
+              <div>
+                <h3>Dicta y listo — la IA escribe el expediente</h3>
+                <p>Mientras atiendes, hablas. LynkaMed transcribe a notas clínicas. Ese es el “wow” de la demo.</p>
+              </div>
+            </div>
+            <div class="benefit">
+              <div class="benefit-ico">01</div>
+              <div>
+                <h3>Expedientes reales por especialidad</h3>
+                <p>Odontograma, cardio, rehab, nutrición… no campos de relleno. Documentación que sirve en auditoría y en consulta.</p>
+              </div>
+            </div>
+            <div class="benefit">
+              <div class="benefit-ico">02</div>
+              <div>
+                <h3>Agenda + caja + portal en un solo lugar</h3>
+                <p>De la cita al cobro y al PDF del paciente sin saltar de app. Menos fricción = más retención.</p>
+              </div>
+            </div>
+            <div class="benefit">
+              <div class="benefit-ico">03</div>
+              <div>
+                <h3>Crece sin cambiar de sistema</h3>
+                <p>Consultorio hoy, clínica o segunda sucursal mañana. Misma cuenta, multi-workspace.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-col">
+          <div class="pricing">
+            <div class="pricing-badge">Solo este mes · Lanzamiento</div>
+            <h2>Precios que cierran hoy</h2>
+            <p class="sub">Empieza gratis 30 días. Si te convence, te quedas con tarifa de lanzamiento.</p>
+            <div class="price-row">
+              <span>Consultorio privado</span>
+              <div><span class="was">$1,299</span><strong>$999/mes</strong></div>
+            </div>
+            <div class="price-row">
+              <span>Clínica dental</span>
+              <div><span class="was">$1,999</span><strong>$1,699/mes</strong></div>
+            </div>
+            <div class="price-row">
+              <span>Rehabilitación</span>
+              <strong>$3,000/mes</strong>
+            </div>
+            <p class="price-note">Pago anual = 2 meses gratis · Sin contrato mínimo · CFDI disponible como add-on</p>
+          </div>
+          <div class="risk">
+            <strong>Cero riesgo:</strong> 30 días gratis, sin tarjeta. Si no te ahorra tiempo en la primera semana, cancelas. Así de simple.
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <section class="cta">
+      <div>
+        <h3>¿Listo para verlo con tu especialidad?</h3>
+        <p>Demo de 15 min. Te mostramos tu flujo — no un tour genérico de 40 pantallas.</p>
+      </div>
+      <div class="cta-right">
+        <div class="qr-row">
+          <a class="qr" href="https://calendly.com/osnayama8/30min">
+            <img src="qr/qr-demo.png" alt="QR Demo" />
+            <span>Demo</span>
+          </a>
+          <a class="qr" href="https://app.lynkamed.mx/registro">
+            <img src="qr/qr-app.png" alt="QR App" />
+            <span>App</span>
+          </a>
+          <a class="qr" href="https://wa.me/525562297133">
+            <img src="qr/qr-whatsapp.png" alt="QR WhatsApp" />
+            <span>WhatsApp</span>
+          </a>
+        </div>
+        <div class="cta-actions">
+          <a class="cta-btn" href="https://calendly.com/osnayama8/30min">Agendar Demo (15 min) →</a>
+          <div class="cta-meta">Escanea o escribe · +52 55 6229 7133<br/>app.lynkamed.mx/registro · ventas@lynkamed.mx</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div><strong>LynkaMed</strong> · OSMEN TECH ENTERPRISE · Cumplimiento NOM</div>
+      <div>Oferta de lanzamiento · Agosto 2026</div>
+    </footer>
+  </div>
+</body>
+</html>

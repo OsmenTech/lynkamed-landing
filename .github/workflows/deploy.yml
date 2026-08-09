@@ -1,0 +1,56 @@
+# Deploy landing → Hostinger (SCP de /dist)
+#
+# Repo secrets (Settings → Secrets and variables → Actions):
+#   SSH_HOST          host del servidor
+#   SSH_USER          usuario SSH
+#   SSH_PRIVATE_KEY   clave privada (PEM completo)
+#   SSH_PORT          opcional, default 22
+#   DEPLOY_PATH       ej. /home/uXXXX/domains/lynkamed.mx/public_html
+#
+# Nota: public/lynkamed.mp4 no va en git (>100MB). Súbelo una vez al
+# DEPLOY_PATH en el servidor; este workflow usa rm:false y no lo borra.
+
+name: Deploy Landing
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-landing-production
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install, lint & build
+        run: |
+          npm ci
+          npm run lint
+          npm run build
+
+      - name: Upload dist via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          source: "dist/*"
+          target: ${{ secrets.DEPLOY_PATH }}
+          strip_components: 1
+          overwrite: true
+          rm: false
+
+      - name: Smoke note
+        run: echo "Landing deploy OK → ${{ secrets.DEPLOY_PATH }}"
