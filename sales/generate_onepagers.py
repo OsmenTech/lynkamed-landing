@@ -306,7 +306,7 @@ VERSIONS = [
       ("15 min", "Demo cardiológica\nenfocada"),
       ("2 meses", "Gratis al pagar\nanual"),
     ],
-    "cmp": "ECE hospitalarios o genéricos: <strong>$3,000–$7,000+/mes</strong>. LynkaMed para cardiología en consultorio: <strong>desde $999/mes</strong> en lanzamiento; clínicas según módulos.",
+    "cmp": "Expedientes clínicos electrónicos hospitalarios o genéricos: <strong>$3,000–$7,000+/mes</strong>. LynkaMed para cardiología en consultorio: <strong>desde $999/mes</strong> en lanzamiento; clínicas según módulos.",
     "prices": [
       ("Consultorio de cardiología", "$999", "$1,299", "lanzamiento"),
       ("Con módulos cardio avanzados", "Cotiza", None, "ECG / eco / clínica"),
