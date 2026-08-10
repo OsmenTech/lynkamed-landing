@@ -42,7 +42,7 @@ a { color: inherit; text-decoration: none; border: 0; outline: 0; box-shadow: no
   display: flex; align-items: center; justify-content: space-between; margin-bottom: 7mm;
 }
 .brand { display: flex; align-items: center; gap: 3mm; }
-.brand-mark { width: 11mm; height: 11mm; flex-shrink: 0; }
+.brand-mark { width: 11mm; height: 11mm; flex-shrink: 0; border-radius: 2.2mm; display: block; object-fit: cover; background: #fff; }
 .brand-word {
   font-family: 'Manrope', sans-serif; font-size: 21px; font-weight: 800;
   letter-spacing: -0.04em; line-height: 1;
@@ -199,13 +199,7 @@ h1 em { font-style: normal; color: #00d4ff; }
 .footer strong { color: #002147; }
 """
 
-LOGO_SVG = """
-<svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-  <path d="M10 8h18c2.2 0 4 1.8 4 4v12.5c0 1.1-.4 2.1-1.2 2.9L18 40.2c-.8.8-1.8 1.2-2.9 1.2H10c-2.2 0-4-1.8-4-4V12c0-2.2 1.8-4 4-4z" fill="#3b82f6"/>
-  <path d="M10 8h18c2.2 0 4 1.8 4 4v2H10V8z" fill="#2563eb"/>
-  <path d="M12 22h6l3-7 4 16 3.5-9H42" stroke="#e0f2fe" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-"""
+LOGO_IMG = '<img class="brand-mark" src="favicon.svg" alt="LynkaMed" />'
 
 VERSIONS = [
   {
@@ -403,7 +397,7 @@ def html_for(v: dict) -> str:
     <header class="hero">
       <div class="hero-top">
         <div class="brand">
-          {LOGO_SVG}
+          {LOGO_IMG}
           <div>
             <div class="brand-word"><span class="lynka">lynka</span><span class="med">med</span></div>
             <div class="brand-sub">OSMEN TECH ENTERPRISE</div>
@@ -429,7 +423,7 @@ def html_for(v: dict) -> str:
         <div class="right-col">
           <div class="pricing">
             <div class="pricing-badge">Lanzamiento · Solo este mes</div>
-            <h2>Precio que gana la comparación</h2>
+            <h2>Planes y precios</h2>
             <p class="sub">Empieza gratis. Quédate con tarifa de lanzamiento.</p>
             <div class="cmp">{v['cmp']}</div>
             {render_prices(v['prices'])}

@@ -46,7 +46,7 @@
       display: flex; align-items: center; gap: 3.5mm;
       margin-bottom: 10mm;
     }
-    .brand-mark { width: 12mm; height: 12mm; }
+    .brand-mark { width: 12mm; height: 12mm; border-radius: 2.4mm; display: block; object-fit: cover; background: #fff; }
     .brand-word {
       font-family: 'Manrope', sans-serif;
       font-size: 24px; font-weight: 800; letter-spacing: -0.04em; line-height: 1;
@@ -186,11 +186,7 @@
   <div class="page">
     <header class="top">
       <div class="brand">
-        <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <path d="M10 8h18c2.2 0 4 1.8 4 4v12.5c0 1.1-.4 2.1-1.2 2.9L18 40.2c-.8.8-1.8 1.2-2.9 1.2H10c-2.2 0-4-1.8-4-4V12c0-2.2 1.8-4 4-4z" fill="#3b82f6"/>
-          <path d="M10 8h18c2.2 0 4 1.8 4 4v2H10V8z" fill="#2563eb"/>
-          <path d="M12 22h6l3-7 4 16 3.5-9H42" stroke="#e0f2fe" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <img class="brand-mark" src="favicon.svg" alt="LynkaMed" />
         <div>
           <div class="brand-word"><span class="lynka">lynka</span><span class="med">med</span></div>
           <div class="brand-sub">App para pacientes</div>

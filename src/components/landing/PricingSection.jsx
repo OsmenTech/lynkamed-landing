@@ -27,7 +27,7 @@ const PLANS = [
     priceNormal: '$1,999',
     priceAnual: '$16,990',
     features: [
-      'Hasta 30 usuarios',
+      'Hasta 15 usuarios',
       'Sucursales adicionales',
       'Odontograma interactivo',
       'Planes de tratamiento',
@@ -46,7 +46,7 @@ const PLANS = [
     priceNormal: '$3,000',
     priceAnual: '$30,000',
     features: [
-      'Hasta 30 usuarios',
+      'Hasta 15 usuarios',
       'Sucursales adicionales',
       'Módulos cardíaco, pulmonar y fisio',
       'ECG, ecocardiograma',
