@@ -4,7 +4,7 @@
 
 Marketing site lynkamed.mx (React + Vite + Tailwind). SEO y conversión importan.
 
-Dominio del producto (clínicas, consultorios, pasaporte, apps): ver `lynkamed-api/docs/PRODUCTO.md` en el monorepo local.
+Dominio del producto e inventario de capacidades: ver `lynkamed-api/docs/PRODUCTO.md` en el monorepo local.
 
 ## Principios
 
