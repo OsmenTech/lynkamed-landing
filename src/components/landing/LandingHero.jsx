@@ -12,8 +12,8 @@ const TRUST_ITEMS = [
 ]
 
 const STATS = [
-  { value: '+30', label: 'Tipos de expediente', sub: 'Por especialidad médica' },
-  { value: '100%', label: 'En la nube', sub: 'Sin instalar nada' },
+  { value: '25+', label: 'Tipos de expediente', sub: 'Incl. pediatría y derma' },
+  { value: '3 apps', label: 'Web + paciente + clínica', sub: 'Misma nube' },
   { value: '30 días', label: 'Prueba gratuita', sub: 'Sin tarjeta de crédito' },
 ]
 
@@ -61,19 +61,20 @@ export function LandingHero() {
             </div>
 
             <h1 className="mt-6 text-[2.8rem] font-extrabold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-[3.5rem]">
-              Lynkamed: software médico que se adapta a{' '}
+              Lynkamed:{' '}
               <span className="relative">
-                <span style={{ color: ELECTRIC }}>tu especialidad</span>
+                <span style={{ color: ELECTRIC }}>software médico</span>
                 <span
                   className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full opacity-60"
                   style={{ background: `linear-gradient(90deg, ${ELECTRIC}, transparent)` }}
                 />
-              </span>
+              </span>{' '}
+              para tu especialidad en México
             </h1>
 
             <p className="mt-6 max-w-md text-lg leading-8 text-slate-400">
-              Módulos por especialidad, NOM de expediente electrónico y una sola app si atiendes
-              en varios hospitales o en tu consultorio particular.
+              Expediente NOM-024, agenda, caja, portal y apps. Pasaporte QR, directorio con reseñas
+              y chat — una nube si atiendes en hospital o en tu consultorio.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">

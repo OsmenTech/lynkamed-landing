@@ -7,34 +7,41 @@ import { MarketingPageLayout } from './components/landing/MarketingPageLayout.js
 const LIVE_CAPABILITIES = CURRENT_CAPABILITIES.filter((item) => item.status === 'live')
 
 const CAPABILITY_META = {
-  portal: { Icon: IconUsers, highlights: ['Acceso con OTP', 'Documentos compartidos'] },
+  portal: { Icon: IconUsers, highlights: ['OTP y documentos', 'Bienestar'] },
+  apps: { Icon: IconSparkles, highlights: ['App paciente', 'App clínica'] },
+  pasaporte: { Icon: IconShare, highlights: ['QR ICE', 'Vínculo rápido'] },
+  directorio: { Icon: IconLayers, highlights: ['Pin en mapa', 'Reseñas verificadas'] },
+  chat: { Icon: IconUsers, highlights: ['Inbox clínica', 'Respeta bloqueos'] },
   caja: { Icon: IconCash, highlights: ['Pagos y egresos', 'Recibos digitales'] },
-  presupuestos: { Icon: IconCash, highlights: ['Generación de cotizaciones', 'Visualización en portal del paciente'] },
+  analiticas: { Icon: IconLayers, highlights: ['Ingresos', 'Citas e inactivos'] },
+  presupuestos: { Icon: IconCash, highlights: ['Cotizaciones', 'Portal del paciente'] },
   calendario: { Icon: IconCalendar, highlights: ['Vista calendario', 'Gestión por sucursal'] },
-  recetas: { Icon: IconSignature, highlights: ['Firma electrónica', 'PDF descargable'] },
+  recetas: { Icon: IconSignature, highlights: ['e.Firma', 'QR de verificación'] },
+  'firma-remota': { Icon: IconSignature, highlights: ['Link seguro', 'Consentimientos'] },
+  especialidades: { Icon: IconHeartPulse, highlights: ['Pediatría y derma', 'Cardio, dental, gine…'] },
   pdf: { Icon: IconLayers, highlights: ['Expedientes y recetas', 'Exportación a PDF'] },
   sucursales: { Icon: IconLayers, highlights: ['Multi-sede', 'Permisos por sucursal'] },
   laboratorios: { Icon: IconLungs, highlights: ['Órdenes con estatus', 'Portal seguro'] },
   inventario: { Icon: IconLayers, highlights: ['Control de stock', 'Alertas por mínimo'] },
   'facturacion-cfdi': { Icon: IconCash, highlights: ['Timbrado CFDI 4.0', 'Descarga XML/PDF'] },
   'dental-avanzado': { Icon: IconDental, highlights: ['Odontograma', 'Radiografías'] },
-  workspace: { Icon: IconShare, highlights: ['Médica Sur + Ángeles + particular', 'Un login, varios espacios'] },
+  workspace: { Icon: IconShare, highlights: ['Varios hospitales', 'Un login'] },
 }
 
 const CLINIC_SHOWCASE = [
   { label: 'Cardiología', Icon: IconHeartPulse },
   { label: 'Pediatría', Icon: IconUsers },
+  { label: 'Dermatología', Icon: IconSparkles },
   { label: 'Dental', Icon: IconDental },
-  { label: 'Laboratorios', Icon: IconLungs },
-  { label: 'Oftalmología', Icon: IconSparkles },
-  { label: 'Psicología', Icon: IconUsers },
+  { label: 'Ginecología', Icon: IconUsers },
+  { label: 'Fisioterapia', Icon: IconLungs },
 ]
 
-const ROADMAP_WITH_PERIOD = [
-  { ...ROADMAP_FEATURES[0], period: 'Agosto 2026', image: '/vademecum.jpg' },
-  { ...ROADMAP_FEATURES[1], period: 'Diciembre 2026', image: '/IA.jpg' },
-  { ...ROADMAP_FEATURES[2], period: 'Dic 2026 - Ene 2027', image: '/telemedicina.jpg' },
-]
+const ROADMAP_WITH_PERIOD = ROADMAP_FEATURES.map((f) => ({
+  ...f,
+  period: f.date,
+  image: f.id === 'vademecum' ? '/vademecum.jpg' : f.id === 'ia-clinica' ? '/IA.jpg' : '/telemedicina.jpg',
+}))
 
 function RoadmapStatus({ status }) {
   if (status === 'development') {
@@ -58,8 +65,8 @@ export default function FuncionalidadesPage() {
   return (
     <MarketingPageLayout
     eyebrow="Funcionalidades"
-      title="Módulos listos para la operación diaria"
-      description="Desde expediente clínico y agenda hasta laboratorio, inventario, facturación y seguimiento operativo. LynkaMed conecta las áreas clave en una sola plataforma."
+      title="Capacidades del software médico Lynkamed"
+      description="Inventario real en producción: expediente por especialidad, agenda, caja, apps, pasaporte QR, directorio con reseñas, chat, firma remota y más — para clínicas y consultorios en México."
     >
       <section className="bg-[#f8fafc] px-5 py-16 md:px-8 md:py-20">
         <div className="mx-auto max-w-[1280px]">
@@ -68,7 +75,9 @@ export default function FuncionalidadesPage() {
               <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">Lo que ya puedes usar hoy</h2>
               <p className="mt-2 text-slate-600">Funcionalidades core disponibles para implementación inmediata.</p>
             </div>
-            <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-blue-600">⚡ Actualizado v4.2</p>
+            <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-blue-600">
+              {LIVE_CAPABILITIES.length} módulos live
+            </p>
           </AnimatedSection>
 
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -239,8 +248,8 @@ export default function FuncionalidadesPage() {
         <div className="mx-auto max-w-[1280px]">
           <AnimatedSection className="mb-14 flex flex-wrap items-center justify-between gap-4" variant="fade" once={false}>
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-blue-600">Futuro de la salud</span>
-              <h2 className="mt-3 text-4xl font-extrabold tracking-tight text-slate-900">Roadmap — Próximamente</h2>
+              <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-blue-600">Hacia dónde vamos</span>
+              <h2 className="mt-3 text-4xl font-extrabold tracking-tight text-slate-900">Roadmap — lo que sigue</h2>
             </div>
             <div className="rounded-full border border-slate-200 bg-white p-1 text-xs font-semibold">
               <span className="rounded-full bg-blue-600 px-4 py-2 text-white">2026</span>

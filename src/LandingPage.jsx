@@ -5,27 +5,37 @@ import { LandingHeader } from './components/landing/LandingHeader.jsx'
 import { LandingHero } from './components/landing/LandingHero.jsx'
 import { MultiWorkspaceSection } from './components/landing/MultiWorkspaceSection.jsx'
 import { MobileStickyCta } from './components/landing/MobileStickyCta.jsx'
-import { IconCalendar, IconUsers, IconCheckCircle } from './components/landing/Icons.jsx'
-import { CURRENT_CAPABILITIES, ELECTRIC, NAVY, CALENDLY_DEMO_URL, CALENDLY_DEMO_LABEL } from './components/landing/constants.js'
-import { HiOutlineLightningBolt, HiOutlineShieldCheck, HiOutlineChartBar } from 'react-icons/hi'
+import { IconCalendar, IconUsers } from './components/landing/Icons.jsx'
+import {
+  CURRENT_CAPABILITIES,
+  ELECTRIC,
+  PRODUCT_VISION,
+  CALENDLY_DEMO_URL,
+  CALENDLY_DEMO_LABEL,
+} from './components/landing/constants.js'
+import { HiOutlineLightningBolt, HiOutlineShieldCheck, HiOutlineChartBar, HiOutlineMap } from 'react-icons/hi'
 
 const FEATURE_CARDS = [
   {
-    title: 'Varios consultorios, una app',
-    description: 'Atiende en Médica Sur, el Ángeles o tu consultorio particular: un login y cambias de espacio en segundos.',
+    title: 'Varios consultorios, una nube',
+    description: 'Atiende en hospital o en tu consultorio particular: un login y cambias de espacio en segundos.',
     Icon: IconUsers,
   },
   {
-    title: 'Agenda multi-sucursal',
-    description: 'Si tu clínica tiene varias sedes, gestiona cada ubicación con agenda, caja y equipo propios.',
-    Icon: IconCalendar,
+    title: 'Directorio y reseñas',
+    description: 'Pin en el mapa, valoraciones al espacio o al médico, y respuesta desde el panel.',
+    Icon: HiOutlineMap,
   },
   {
-    title: 'Caja y analíticas',
-    description: 'Ingresos del periodo, cancelaciones e inactivos. Ves si la cartera creció, no solo el padrón.',
-    Icon: HiOutlineChartBar,
+    title: 'Agenda, caja y chat',
+    description: 'Citas, finanzas e inbox con el paciente — sin depender solo de WhatsApp.',
+    Icon: IconCalendar,
   },
 ]
+
+const HIGHLIGHT_CAPS = CURRENT_CAPABILITIES.filter((c) =>
+  ['pasaporte', 'directorio', 'chat', 'recetas', 'especialidades', 'apps'].includes(c.id)
+)
 
 const PAGE_LINKS = [
   {
@@ -35,7 +45,7 @@ const PAGE_LINKS = [
   },
   {
     title: 'Funcionalidades',
-    description: 'Capacidades del sistema, módulos y vista por tipo de operación.',
+    description: 'Inventario de capacidades en producción y por especialidad.',
     href: '/funcionalidades',
   },
   {
@@ -45,25 +55,9 @@ const PAGE_LINKS = [
   },
   {
     title: 'Preguntas frecuentes',
-    description: 'Resolvemos dudas sobre seguridad, implementación y soporte.',
+    description: 'NOM-024, pasaporte QR, directorio, seguridad y roadmap.',
     href: '/faq',
   },
-]
-
-const LIVE_MODULE_COUNT = CURRENT_CAPABILITIES.filter((item) => item.status === 'live').length
-
-const CLINICAL_HIGHLIGHTS = [
-  'Agenda y calendario',
-  'Portal paciente',
-  'Caja y finanzas',
-  'Reportes clínicos',
-  'Inventario'
-]
-
-const OPERATIONS_MODULES = [
-  'Expediente clínico',
-  'Facturación CFDI 4.0',
-  'Multi-sucursal',
 ]
 
 export default function LandingPage() {
@@ -74,7 +68,6 @@ export default function LandingPage() {
         <LandingHero />
 
         <section className="relative overflow-hidden bg-[#060d1f] px-5 py-20 md:px-8 md:py-28">
-          {/* Grid texture */}
           <div
             className="absolute inset-0 opacity-[0.035]"
             style={{
@@ -91,7 +84,7 @@ export default function LandingPage() {
                 Funciones principales para tu clínica
               </h2>
               <p className="mt-5 text-lg leading-8 text-slate-400">
-                Expediente, agenda, caja y analíticas conectados desde el primer día.
+                Expediente, mapa, agenda y relación con el paciente — conectados desde el primer día.
               </p>
             </AnimatedSection>
 
@@ -106,9 +99,12 @@ export default function LandingPage() {
                       </div>
                       <h3 className="mt-6 text-xl font-bold tracking-tight text-white">{item.title}</h3>
                       <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{item.description}</p>
-                      <div className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-blue-400 opacity-0 transition-opacity group-hover:opacity-100">
-                        Explorar <span>→</span>
-                      </div>
+                      <NavLink
+                        to="/funcionalidades"
+                        className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold text-blue-400 opacity-80 transition group-hover:opacity-100"
+                      >
+                        Ver capacidades <span aria-hidden>→</span>
+                      </NavLink>
                     </article>
                   </AnimatedSection>
                 )
@@ -117,11 +113,86 @@ export default function LandingPage() {
           </div>
         </section>
 
+        <section className="bg-white px-5 py-20 md:px-8 md:py-24" id="capacidades" aria-labelledby="capacidades-heading">
+          <div className="mx-auto max-w-[1280px]">
+            <AnimatedSection className="mx-auto max-w-3xl text-center">
+              <span className="chip chip-blue mb-5 inline-flex">Nuevo en producción</span>
+              <h2 id="capacidades-heading" className="text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
+                Capacidades que ya usan clínicas y pacientes
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-slate-500">
+                Lo reciente del producto, listo hoy — sin roadmap de humo.
+              </p>
+            </AnimatedSection>
+
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {HIGHLIGHT_CAPS.map((cap, i) => (
+                <AnimatedSection key={cap.id} delay={i * 60}>
+                  <article className="h-full rounded-2xl border border-slate-100 bg-slate-50/80 p-6 transition hover:border-blue-200 hover:bg-white hover:shadow-md">
+                    <div className="mb-3 flex items-center justify-between gap-2">
+                      <h3 className="text-base font-bold text-slate-900">{cap.title}</h3>
+                      <span className="shrink-0 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-700">
+                        Live
+                      </span>
+                    </div>
+                    <p className="text-sm leading-6 text-slate-600">{cap.description}</p>
+                  </article>
+                </AnimatedSection>
+              ))}
+            </div>
+
+            <div className="mt-8 flex justify-center">
+              <NavLink
+                to="/funcionalidades"
+                className="button-press inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50"
+              >
+                Ver todas las funcionalidades
+              </NavLink>
+            </div>
+          </div>
+        </section>
+
         <MultiWorkspaceSection />
+
+        <section className="relative overflow-hidden bg-slate-50 px-5 py-20 md:px-8 md:py-28" aria-labelledby="vision-heading">
+          <div className="mx-auto max-w-[1280px]">
+            <AnimatedSection className="mx-auto max-w-3xl text-center">
+              <span className="chip chip-blue mb-5 inline-flex">Qué estamos construyendo</span>
+              <h2 id="vision-heading" className="text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
+                {PRODUCT_VISION.headline}
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-slate-600">{PRODUCT_VISION.body}</p>
+            </AnimatedSection>
+
+            <div className="mt-14 grid gap-6 md:grid-cols-3">
+              {PRODUCT_VISION.pillars.map((pillar, i) => (
+                <AnimatedSection key={pillar.title} delay={i * 80}>
+                  <article className="h-full rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm">
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-blue-600">0{i + 1}</p>
+                    <h3 className="mt-3 text-xl font-bold text-slate-900">{pillar.title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-600">{pillar.text}</p>
+                  </article>
+                </AnimatedSection>
+              ))}
+            </div>
+
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {PAGE_LINKS.map((link) => (
+                <NavLink
+                  key={link.href}
+                  to={link.href}
+                  className="rounded-xl border border-slate-200 bg-white p-5 transition hover:border-blue-300 hover:shadow-md"
+                >
+                  <p className="font-bold text-slate-900">{link.title}</p>
+                  <p className="mt-1 text-sm text-slate-500">{link.description}</p>
+                </NavLink>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section className="relative overflow-hidden bg-white px-5 py-20 md:px-8 md:py-28">
           <div className="mx-auto max-w-[1280px]">
-            {/* Header */}
             <AnimatedSection className="mx-auto max-w-3xl text-center">
               <span className="chip chip-blue mb-5 inline-flex">¿Por qué LynkaMed?</span>
               <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-5xl">
@@ -133,7 +204,6 @@ export default function LandingPage() {
               </p>
             </AnimatedSection>
 
-            {/* 3 differentiator cards */}
             <div className="mt-16 grid gap-6 md:grid-cols-3">
               {[
                 {
@@ -146,13 +216,13 @@ export default function LandingPage() {
                   Icon: HiOutlineShieldCheck,
                   color: 'emerald',
                   title: 'Cumplimiento NOM-024',
-                  desc: 'Expediente clínico electrónico con los estándares de la norma oficial mexicana para clínicas y consultorios.',
+                  desc: 'Expediente clínico electrónico con checklist, retención y firma — pensado para el marco mexicano.',
                 },
                 {
                   Icon: HiOutlineChartBar,
                   color: 'violet',
                   title: 'Visibilidad total de tu negocio',
-                  desc: 'Reportes de ingresos, citas, expedientes y desempeño por sucursal. Toma decisiones con datos reales.',
+                  desc: 'Reportes de ingresos, citas, expedientes y reputación en el directorio. Decisiones con datos reales.',
                 },
               ].map(({ Icon: StepIcon, color, title, desc }, i) => (
                 <AnimatedSection key={title} delay={i * 80}>
@@ -171,7 +241,6 @@ export default function LandingPage() {
               ))}
             </div>
 
-            {/* Bottom CTA strip */}
             <AnimatedSection delay={240} className="mt-10">
               <div className="flex flex-col items-center justify-between gap-6 rounded-2xl border border-slate-100 bg-slate-50 px-8 py-7 md:flex-row">
                 <div>
@@ -199,9 +268,8 @@ export default function LandingPage() {
             </AnimatedSection>
           </div>
         </section>
-        {/* CTA final */}
+
         <section className="relative overflow-hidden bg-[#002147] px-5 py-24 md:px-8">
-          {/* Mesh grid */}
           <div
             className="absolute inset-0 opacity-[0.06]"
             style={{
@@ -209,7 +277,6 @@ export default function LandingPage() {
               backgroundSize: '60px 60px',
             }}
           />
-          {/* Blue glow top-right */}
           <div className="absolute -right-32 -top-32 h-[30rem] w-[30rem] rounded-full bg-blue-500/20 blur-[90px]" />
           <div className="absolute -bottom-20 left-1/4 h-[20rem] w-[40rem] rounded-full bg-blue-800/30 blur-[80px]" />
 
@@ -244,7 +311,7 @@ export default function LandingPage() {
             </div>
             <div className="divider-x mt-12 opacity-20" />
             <div className="mt-8 flex flex-wrap gap-6">
-              {['Sin contrato mínimo', 'Cancela cuando quieras', 'Soporte incluido', 'NOM-024'].map(t => (
+              {['Sin contrato mínimo', 'Cancela cuando quieras', 'Soporte incluido', 'NOM-024'].map((t) => (
                 <span key={t} className="flex items-center gap-2 text-sm text-slate-400">
                   <svg className="h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
