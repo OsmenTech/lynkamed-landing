@@ -5,7 +5,7 @@ import { LandingHeader } from './components/landing/LandingHeader.jsx'
 import { LandingHero } from './components/landing/LandingHero.jsx'
 import { MultiWorkspaceSection } from './components/landing/MultiWorkspaceSection.jsx'
 import { MobileStickyCta } from './components/landing/MobileStickyCta.jsx'
-import { IconCalendar, IconCash, IconUsers, IconCheckCircle } from './components/landing/Icons.jsx'
+import { IconCalendar, IconUsers, IconCheckCircle } from './components/landing/Icons.jsx'
 import { CURRENT_CAPABILITIES, ELECTRIC, NAVY, CALENDLY_DEMO_URL, CALENDLY_DEMO_LABEL } from './components/landing/constants.js'
 import { HiOutlineLightningBolt, HiOutlineShieldCheck, HiOutlineChartBar } from 'react-icons/hi'
 
@@ -21,9 +21,9 @@ const FEATURE_CARDS = [
     Icon: IconCalendar,
   },
   {
-    title: 'Facturación Electrónica',
-    description: 'Emisión de CFDI 4.0 integrada. Control de ingresos, cobros pendientes y reportes financieros automáticos.',
-    Icon: IconCash,
+    title: 'Caja y analíticas',
+    description: 'Ingresos del periodo, cancelaciones e inactivos. Ves si la cartera creció, no solo el padrón.',
+    Icon: HiOutlineChartBar,
   },
 ]
 
@@ -91,7 +91,7 @@ export default function LandingPage() {
                 Funciones principales para tu clínica
               </h2>
               <p className="mt-5 text-lg leading-8 text-slate-400">
-                Expediente, agenda, caja y portal del paciente conectados desde el primer día.
+                Expediente, agenda, caja y analíticas conectados desde el primer día.
               </p>
             </AnimatedSection>
 

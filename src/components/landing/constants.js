@@ -254,6 +254,12 @@ export const CURRENT_CAPABILITIES = [
     status: 'live',
   },
   {
+    id: 'analiticas',
+    title: 'Analíticas del consultorio',
+    description: 'Citas, cancelaciones, pacientes nuevos e inactivos, y caja del periodo. Comparas contra el periodo anterior.',
+    status: 'live',
+  },
+  {
     id: 'presupuestos',
     title: 'Presupuestos Clínicos',
     description: 'Generación de presupuestos y cotizaciones. Puedes compartirlos para que el paciente los visualice en su portal.',

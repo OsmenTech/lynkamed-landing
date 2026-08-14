@@ -4,6 +4,8 @@
 
 Marketing site lynkamed.mx (React + Vite + Tailwind). SEO y conversión importan.
 
+Dominio del producto (clínicas, consultorios, pasaporte, apps): ver `lynkamed-api/docs/PRODUCTO.md` en el monorepo local.
+
 ## Principios
 
 - Una composición clara en el hero; marca primero; sin cards innecesarias en hero.
