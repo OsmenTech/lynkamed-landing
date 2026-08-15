@@ -27,7 +27,7 @@ export function LandingFooter() {
             className="h-24 w-auto brightness-0 invert -my-8"
           />
           <p className="mt-5 text-sm leading-relaxed text-slate-300/80">
-            Empoderando al sector salud con tecnología de grado institucional para una mejor atención al paciente.
+            Software médico NOM-024 para clínicas y consultorios en México. Expediente, agenda, portal del paciente y app móvil próximamente.
           </p>
           <div className="mt-6 flex items-center gap-2">
             {SOCIAL_LINKS.map((social) => (

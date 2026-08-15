@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { CURRENT_CAPABILITIES, FAQ_ITEMS, PRODUCT_VISION } from './constants.js'
+import { FAQ_ITEMS } from './constants.js'
 
 const SITE_URL = 'https://lynkamed.mx'
 const APP_URL = 'https://app.lynkamed.mx'
@@ -13,7 +13,7 @@ function plainAnswer(answer) {
     .trim()
 }
 
-/** JSON-LD para rich results (Organization, SoftwareApplication, WebSite, FAQ, ItemList). */
+/** JSON-LD para GEO / rich results (Organization, SoftwareApplication, FAQPage). */
 export function SeoJsonLd() {
   useEffect(() => {
     const organization = {
@@ -24,41 +24,21 @@ export function SeoJsonLd() {
       legalName: 'Osmen Tech Enterprise S.A.S',
       url: SITE_URL,
       logo: LOGO_URL,
-      description: PRODUCT_VISION.body,
+      description:
+        'Software médico en la nube para médicos y clínicas en México. Expedientes clínicos por especialidad (NOM-024), agenda, caja, pasaporte de salud QR, directorio y portal del paciente. App móvil próximamente.',
       email: 'ventas@lynkamed.mx',
       areaServed: {
         '@type': 'Country',
         name: 'México',
       },
-      knowsAbout: [
-        'Expediente clínico electrónico NOM-024',
-        'Software para consultorios médicos',
-        'Software para clínicas',
-        'Agenda médica',
-        'Portal del paciente',
-        'Facturación CFDI',
-        'Pasaporte de salud',
-        'Directorio médico',
-      ],
       sameAs: [
         'https://www.facebook.com/lynkamed',
         'https://www.instagram.com/lynkamed',
         APP_URL,
+        // Agregar LinkedIn company cuando exista:
+        // 'https://www.linkedin.com/company/lynkamed',
       ],
     }
-
-    const website = {
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      '@id': `${SITE_URL}/#website`,
-      url: SITE_URL,
-      name: 'Lynkamed',
-      description: PRODUCT_VISION.headline,
-      inLanguage: 'es-MX',
-      publisher: { '@id': `${SITE_URL}/#organization` },
-    }
-
-    const featureList = CURRENT_CAPABILITIES.filter((c) => c.status === 'live').map((c) => c.title)
 
     const software = {
       '@context': 'https://schema.org',
@@ -70,20 +50,29 @@ export function SeoJsonLd() {
       operatingSystem: 'Web, iOS, Android',
       url: SITE_URL,
       downloadUrl: APP_URL,
-      image: LOGO_URL,
+      image: `${SITE_URL}/app-paciente-home.jpg`,
       description:
-        'Software médico en la nube para México: expediente por especialidad (NOM-024), agenda, caja y CFDI, portal y apps, pasaporte QR, directorio con reseñas, chat y firma remota.',
+        'Lynkamed es el software médico en la nube para médicos y clínicas en México. Expedientes clínicos por especialidad (NOM-024), agenda, caja, pasaporte de salud QR, directorio con reseñas y portal del paciente. App iOS y Android próximamente.',
       inLanguage: 'es-MX',
       offers: [
         {
           '@type': 'Offer',
-          name: 'Consultorio privado',
-          price: '1299',
+          name: 'Consultorio',
+          price: '999',
           priceCurrency: 'MXN',
           priceValidUntil: '2027-12-31',
           availability: 'https://schema.org/InStock',
           url: `${APP_URL}/registro?tipo=consultorio`,
-          description: 'Desde $1,299 MXN/mes según especialidad. 30 días de prueba gratis sin tarjeta.',
+          description: 'Plan consultorio desde $999 MXN/mes. 30 días de prueba gratis sin tarjeta.',
+        },
+        {
+          '@type': 'Offer',
+          name: 'Clínica Dental',
+          price: '1699',
+          priceCurrency: 'MXN',
+          priceValidUntil: '2027-12-31',
+          availability: 'https://schema.org/InStock',
+          url: `${APP_URL}/registro?tipo=clinica&especialidad=dental`,
         },
         {
           '@type': 'Offer',
@@ -92,27 +81,25 @@ export function SeoJsonLd() {
           priceCurrency: 'MXN',
           availability: 'https://schema.org/InStock',
           url: `${APP_URL}/registro`,
+          description: 'Registro en menos de 2 minutos. Sin tarjeta de crédito.',
         },
       ],
-      featureList,
+      featureList: [
+        'Expediente clínico electrónico NOM-024',
+        'Agenda médica multi-sucursal',
+        'Portal del paciente',
+        'Pasaporte de salud con QR',
+        'Directorio de clínicas y reseñas',
+        'Mensajería clínica ↔ paciente',
+        'Recetas con firma electrónica y verificación QR',
+        'Pediatría y dermatología',
+        'Control de caja y finanzas',
+        'Facturación CFDI 4.0',
+        'Multi-workspace (varios consultorios / hospitales)',
+        'App paciente iOS y Android (lanzamiento pronto)',
+      ],
       provider: { '@id': `${SITE_URL}/#organization` },
       publisher: { '@id': `${SITE_URL}/#organization` },
-    }
-
-    const itemList = {
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      '@id': `${SITE_URL}/funcionalidades#capacidades`,
-      name: 'Capacidades Lynkamed en producción',
-      description: 'Funcionalidades del software médico Lynkamed disponibles hoy para clínicas y consultorios en México.',
-      numberOfItems: featureList.length,
-      itemListElement: CURRENT_CAPABILITIES.filter((c) => c.status === 'live').map((cap, i) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        name: cap.title,
-        description: cap.description,
-        url: `${SITE_URL}/funcionalidades`,
-      })),
     }
 
     const faq = {
@@ -131,9 +118,7 @@ export function SeoJsonLd() {
 
     const nodes = [
       { id: 'lynkamed-ld-organization', data: organization },
-      { id: 'lynkamed-ld-website', data: website },
       { id: 'lynkamed-ld-software', data: software },
-      { id: 'lynkamed-ld-features', data: itemList },
       { id: 'lynkamed-ld-faq', data: faq },
     ]
 

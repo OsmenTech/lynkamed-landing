@@ -1,31 +1,32 @@
 import { useState } from 'react'
 import { AnimatedSection } from './components/landing/AnimatedSection.jsx'
 import { IconCalendar, IconCash, IconDental, IconHeartPulse, IconLayers, IconLungs, IconShare, IconSignature, IconSparkles, IconUsers } from './components/landing/Icons.jsx'
-import { CLINIC_TYPES, CONSULTORIO_TYPES, CURRENT_CAPABILITIES, ELECTRIC, ROADMAP_FEATURES, CALENDLY_DEMO_URL, CALENDLY_DEMO_LABEL } from './components/landing/constants.js'
+import { CURRENT_CAPABILITIES, ROADMAP_FEATURES, CLINIC_TYPES, CONSULTORIO_TYPES } from './components/landing/constants.js'
+import { AppLaunchSection } from './components/landing/AppLaunchSection.jsx'
 import { MarketingPageLayout } from './components/landing/MarketingPageLayout.jsx'
 
 const LIVE_CAPABILITIES = CURRENT_CAPABILITIES.filter((item) => item.status === 'live')
 
 const CAPABILITY_META = {
-  portal: { Icon: IconUsers, highlights: ['OTP y documentos', 'Bienestar'] },
-  apps: { Icon: IconSparkles, highlights: ['App paciente', 'App clínica'] },
-  pasaporte: { Icon: IconShare, highlights: ['QR ICE', 'Vínculo rápido'] },
-  directorio: { Icon: IconLayers, highlights: ['Pin en mapa', 'Reseñas verificadas'] },
-  chat: { Icon: IconUsers, highlights: ['Inbox clínica', 'Respeta bloqueos'] },
+  portal: { Icon: IconUsers, highlights: ['Acceso con OTP', 'Documentos y mensajes'] },
+  pasaporte: { Icon: IconShare, highlights: ['QR en recepción', 'Datos ICE'] },
+  directorio: { Icon: IconLayers, highlights: ['Mapa de sedes', 'Reseñas espacio/médico'] },
+  'chat-paciente': { Icon: IconUsers, highlights: ['Inbox clínica', 'Portal y app'] },
   caja: { Icon: IconCash, highlights: ['Pagos y egresos', 'Recibos digitales'] },
-  analiticas: { Icon: IconLayers, highlights: ['Ingresos', 'Citas e inactivos'] },
-  presupuestos: { Icon: IconCash, highlights: ['Cotizaciones', 'Portal del paciente'] },
+  analiticas: { Icon: IconLayers, highlights: ['Ingresos del periodo', 'Comparativa'] },
+  presupuestos: { Icon: IconCash, highlights: ['Generación de cotizaciones', 'Visualización en portal del paciente'] },
   calendario: { Icon: IconCalendar, highlights: ['Vista calendario', 'Gestión por sucursal'] },
-  recetas: { Icon: IconSignature, highlights: ['e.Firma', 'QR de verificación'] },
-  'firma-remota': { Icon: IconSignature, highlights: ['Link seguro', 'Consentimientos'] },
-  especialidades: { Icon: IconHeartPulse, highlights: ['Pediatría y derma', 'Cardio, dental, gine…'] },
+  recetas: { Icon: IconSignature, highlights: ['Firma electrónica', 'Verificación por QR'] },
+  'firma-remota': { Icon: IconSignature, highlights: ['Enlace seguro', 'Firma desde el móvil'] },
+  especialidades: { Icon: IconHeartPulse, highlights: ['Pediatría y dermatología', 'Módulos activables'] },
   pdf: { Icon: IconLayers, highlights: ['Expedientes y recetas', 'Exportación a PDF'] },
   sucursales: { Icon: IconLayers, highlights: ['Multi-sede', 'Permisos por sucursal'] },
   laboratorios: { Icon: IconLungs, highlights: ['Órdenes con estatus', 'Portal seguro'] },
   inventario: { Icon: IconLayers, highlights: ['Control de stock', 'Alertas por mínimo'] },
   'facturacion-cfdi': { Icon: IconCash, highlights: ['Timbrado CFDI 4.0', 'Descarga XML/PDF'] },
   'dental-avanzado': { Icon: IconDental, highlights: ['Odontograma', 'Radiografías'] },
-  workspace: { Icon: IconShare, highlights: ['Varios hospitales', 'Un login'] },
+  workspace: { Icon: IconShare, highlights: ['Médica Sur + Ángeles + particular', 'Un login, varios espacios'] },
+  bienestar: { Icon: IconSparkles, highlights: ['Pasos e hidratación', 'Tips de bienestar'] },
 }
 
 const CLINIC_SHOWCASE = [
@@ -37,13 +38,14 @@ const CLINIC_SHOWCASE = [
   { label: 'Fisioterapia', Icon: IconLungs },
 ]
 
-const ROADMAP_WITH_PERIOD = ROADMAP_FEATURES.map((f) => ({
-  ...f,
-  period: f.date,
-  image: f.id === 'vademecum' ? '/vademecum.jpg' : f.id === 'ia-clinica' ? '/IA.jpg' : '/telemedicina.jpg',
-}))
-
 function RoadmapStatus({ status }) {
+  if (status === 'launch') {
+    return (
+      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" /> Lanzamiento pronto
+      </span>
+    )
+  }
   if (status === 'development') {
     return (
       <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
@@ -64,9 +66,9 @@ export default function FuncionalidadesPage() {
 
   return (
     <MarketingPageLayout
-    eyebrow="Funcionalidades"
-      title="Capacidades del software médico Lynkamed"
-      description="Inventario real en producción: expediente por especialidad, agenda, caja, apps, pasaporte QR, directorio con reseñas, chat, firma remota y más — para clínicas y consultorios en México."
+      eyebrow="Funcionalidades"
+      title="Capacidades clínicas listas para operar hoy"
+      description="Expediente por especialidad, pasaporte QR, directorio con reseñas, mensajería paciente-clínica, caja, inventario y CFDI. LynkaMed conecta la operación real en una sola plataforma."
     >
       <section className="bg-[#f8fafc] px-5 py-16 md:px-8 md:py-20">
         <div className="mx-auto max-w-[1280px]">
@@ -75,9 +77,7 @@ export default function FuncionalidadesPage() {
               <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">Lo que ya puedes usar hoy</h2>
               <p className="mt-2 text-slate-600">Funcionalidades core disponibles para implementación inmediata.</p>
             </div>
-            <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-blue-600">
-              {LIVE_CAPABILITIES.length} módulos live
-            </p>
+            <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-blue-600">⚡ Actualizado · Ago 2026</p>
           </AnimatedSection>
 
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -244,27 +244,28 @@ export default function FuncionalidadesPage() {
         </div>
       </section>
 
+      <AppLaunchSection />
+
       <section className="bg-[#f8fafc] px-5 py-20 md:px-8 md:py-24">
         <div className="mx-auto max-w-[1280px]">
           <AnimatedSection className="mb-14 flex flex-wrap items-center justify-between gap-4" variant="fade" once={false}>
             <div>
               <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-blue-600">Hacia dónde vamos</span>
-              <h2 className="mt-3 text-4xl font-extrabold tracking-tight text-slate-900">Roadmap — lo que sigue</h2>
-            </div>
-            <div className="rounded-full border border-slate-200 bg-white p-1 text-xs font-semibold">
-              <span className="rounded-full bg-blue-600 px-4 py-2 text-white">2026</span>
-              <span className="px-4 py-2 text-slate-500">Archivo</span>
+              <h2 className="mt-3 text-4xl font-extrabold tracking-tight text-slate-900">Roadmap actualizado</h2>
+              <p className="mt-2 max-w-xl text-slate-600">
+                Chat paciente, directorio, pediatría y dermatología ya están disponibles. Esto es lo siguiente.
+              </p>
             </div>
           </AnimatedSection>
 
           <div className="relative space-y-10 md:space-y-14">
             <div className="absolute bottom-0 left-1/2 top-0 hidden w-px -translate-x-1/2 bg-slate-200 md:block" />
 
-            {ROADMAP_WITH_PERIOD.map((item, index) => (
+            {ROADMAP_FEATURES.map((item, index) => (
               <AnimatedSection key={item.id} variant="up" staggerIndex={index} className="grid items-center gap-8 md:grid-cols-2 md:gap-12" once={false}>
                 <div className={`${index % 2 === 1 ? 'md:order-2' : ''}`}>
                   <span className="inline-block rounded-full bg-slate-200 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">
-                    {item.period}
+                    {item.date}
                   </span>
                   <h3 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">{item.title}</h3>
                   <p className="mt-3 text-slate-600">{item.description}</p>
@@ -275,10 +276,11 @@ export default function FuncionalidadesPage() {
 
                 <div className={`${index % 2 === 1 ? 'md:order-1' : ''}`}>
                   <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                    <img 
-                      src={item.image} 
+                    <img
+                      src={item.image || '/lynkamed-logo.png'}
                       alt={item.title}
-                      className="h-52 w-full object-cover rounded-xl"
+                      className={`h-52 w-full rounded-xl ${item.id === 'app-paciente' ? 'object-contain bg-slate-950 object-top' : 'object-cover'}`}
+                      loading="lazy"
                     />
                   </div>
                 </div>

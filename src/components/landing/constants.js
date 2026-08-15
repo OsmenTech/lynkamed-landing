@@ -27,9 +27,9 @@ export const NAV_LINKS = [
 
 // Stats del Hero - datos reales del sistema
 export const HERO_STATS = [
-  { value: '25+', label: 'Tipos de expediente' },
+  { value: '20+', label: 'Tipos de expediente' },
   { value: 'NOM-024', label: 'Cumplimiento' },
-  { value: 'Apps', label: 'Web + paciente + clínica' },
+  { value: '100%', label: 'En la nube' },
 ]
 
 // Plataformas que se reemplazan (simplificado)
@@ -76,22 +76,6 @@ export const ADVANTAGES = [
     summary: 'Envía resultados, notas y recetas al portal del paciente con un solo clic.',
     more: 'Tu paciente recibe una notificación y accede a sus documentos desde el portal con contraseña o código OTP. Seguro, rápido y sin WhatsApp de por medio.',
     Icon: IconShare,
-  },
-  {
-    id: 'pasaporte',
-    promise: 'Emergencia + vínculo',
-    title: 'Pasaporte de salud con QR',
-    summary: 'QR del paciente para vincularse en tu espacio y, en emergencia, mostrar datos ICE esenciales.',
-    more: 'El pasaporte no es el expediente completo: es una ficha limitada (grupo sanguíneo, alergias, contacto). Al escanearlo en clínica se acelera el alta; el paciente controla qué se comparte.',
-    Icon: IconQrCode,
-  },
-  {
-    id: 'directorio',
-    promise: 'Descubrimiento',
-    title: 'Directorio, mapa y reseñas',
-    summary: 'Tu pin en el mapa para pacientes. Valoraciones al espacio o al médico, con respuesta desde el panel.',
-    more: 'Configuras ubicación como en el alta, decides si apareces en el directorio y moderas comentarios. Solo pacientes con vínculo o cita real pueden valorar.',
-    Icon: IconLayers,
   },
   {
     id: 'agenda',
@@ -200,7 +184,7 @@ export const CONSULTORIO_TYPES = [
     name: 'Medicina General',
     description: 'Consulta general con expediente clínico completo NOM-024.',
     color: ELECTRIC,
-    price: 'Desde $1,299/mes',
+    price: '$1,800/mes',
     expedientes: ['Expediente Clínico', 'Recetas', 'Notas de Evolución'],
   },
   {
@@ -208,7 +192,7 @@ export const CONSULTORIO_TYPES = [
     name: 'Cardiología',
     description: 'Expedientes cardiovasculares con historia cardiológica, ecocardiograma y electrocardiograma.',
     color: '#dc2626',
-    price: 'Desde $1,999/mes',
+    price: '$1,800/mes',
     expedientes: ['Historia Cardiológica', 'Ecocardiograma', 'Electrocardiograma', 'Expediente Clínico'],
   },
   {
@@ -216,15 +200,31 @@ export const CONSULTORIO_TYPES = [
     name: 'Ginecología y Obstetricia',
     description: 'Historia ginecológica y obstétrica completa para seguimiento de pacientes.',
     color: '#EC4899',
-    price: 'Desde $1,299/mes',
+    price: '$1,800/mes',
     expedientes: ['Historia Ginecológica', 'Historia Obstétrica', 'Expediente Clínico', 'Notas de Evolución'],
+  },
+  {
+    id: 'pediatria',
+    name: 'Pediatría',
+    description: 'Historia pediátrica y notas de seguimiento para consulta infantil.',
+    color: '#F97316',
+    price: '$1,800/mes',
+    expedientes: ['Historia Clínica Pediatría', 'Nota de Seguimiento Pediatría', 'Recetas', 'Órdenes de laboratorio'],
+  },
+  {
+    id: 'dermatologia',
+    name: 'Dermatología',
+    description: 'Historia dermatológica con seguimiento y apoyo fotográfico clínico.',
+    color: '#F59E0B',
+    price: '$1,800/mes',
+    expedientes: ['Historia Clínica Dermatología', 'Nota de Seguimiento Dermatología', 'Recetas'],
   },
   {
     id: 'nutricion',
     name: 'Nutrición',
     description: 'Seguimiento nutricional con historial y evaluaciones.',
     color: '#f59e0b',
-    price: 'Desde $999/mes',
+    price: '$1,800/mes',
     expedientes: ['Reporte Nutricional', 'Notas de Seguimiento'],
   },
   {
@@ -232,31 +232,15 @@ export const CONSULTORIO_TYPES = [
     name: 'Psicología',
     description: 'Historia psicológica y seguimiento de sesiones.',
     color: '#8b5cf6',
-    price: 'Desde $999/mes',
+    price: '$1,800/mes',
     expedientes: ['Reporte Psicológico', 'Notas de Sesión'],
-  },
-  {
-    id: 'pediatria',
-    name: 'Pediatría',
-    description: 'Historia pediátrica y notas de seguimiento con vacunas y crecimiento.',
-    color: '#f97316',
-    price: 'Desde $1,299/mes',
-    expedientes: ['Historia Clínica Pediatría', 'Nota de Seguimiento Pediatría', 'Recetas', 'Órdenes de lab'],
-  },
-  {
-    id: 'dermatologia',
-    name: 'Dermatología',
-    description: 'Historia dermatológica con fotos clínicas y notas de seguimiento.',
-    color: '#f59e0b',
-    price: 'Desde $1,299/mes',
-    expedientes: ['Historia Clínica Dermatología', 'Nota de Seguimiento', 'Recetas', 'Fotos clínicas'],
   },
   {
     id: 'dental-ind',
     name: 'Dental Individual',
     description: 'Consultorio dental con odontograma y radiografías.',
     color: '#7c3aed',
-    price: 'Desde $1,999/mes',
+    price: '$1,800/mes',
     expedientes: ['Historia Dental', 'Odontograma', 'Radiografías'],
   },
   {
@@ -264,7 +248,7 @@ export const CONSULTORIO_TYPES = [
     name: 'Fisioterapia',
     description: 'Consultorio de rehabilitación física.',
     color: '#059669',
-    price: 'Desde $1,299/mes',
+    price: '$1,800/mes',
     expedientes: ['Historia Fisioterapia', 'Notas de Evolución', 'Nota de Alta'],
   },
 ]
@@ -276,49 +260,25 @@ export const CURRENT_CAPABILITIES = [
   {
     id: 'portal',
     title: 'Portal del Paciente',
-    description: 'Acceso con OTP. Citas, documentos compartidos, mensajes con la clínica y bienestar.',
-    status: 'live',
-  },
-  {
-    id: 'apps',
-    title: 'Apps paciente y clínica',
-    description: 'App Expo del paciente (citas, pasaporte, directorio) y app staff (agenda del día, PDFs, mapa).',
+    description: 'Acceso con OTP y contraseña. Citas, documentos compartidos, directorio y mensajes con la clínica.',
     status: 'live',
   },
   {
     id: 'pasaporte',
-    title: 'Pasaporte de salud (QR)',
-    description: 'Ficha ICE pública limitada + QR para vincular al paciente en tu espacio sin duplicar registros.',
+    title: 'Pasaporte de Salud (QR)',
+    description: 'Identidad clínica del paciente: vinculación en recepción y datos críticos para emergencia (ICE).',
     status: 'live',
   },
   {
     id: 'directorio',
-    title: 'Directorio, mapa y reseñas',
-    description: 'Pin por sucursal, valoraciones al espacio o al médico, respuesta y moderación desde el panel.',
+    title: 'Directorio y reseñas',
+    description: 'Mapa de sedes, pin editable y valoraciones de espacio o médico. Respuesta y moderación desde el panel.',
     status: 'live',
   },
   {
-    id: 'chat',
-    title: 'Chat clínica ↔ paciente',
-    description: 'Mensajería dentro de LynkaMed entre el equipo y pacientes vinculados (respeta bloqueos).',
-    status: 'live',
-  },
-  {
-    id: 'recetas',
-    title: 'Recetas con e.Firma y QR',
-    description: 'Plantillas PDF, firma electrónica y verificación pública por QR sin login.',
-    status: 'live',
-  },
-  {
-    id: 'firma-remota',
-    title: 'Firma remota del paciente',
-    description: 'Envía un enlace seguro para que el paciente firme consentimientos u otros actos desde el móvil.',
-    status: 'live',
-  },
-  {
-    id: 'especialidades',
-    title: 'Expedientes por especialidad',
-    description: 'Cardio, pulmonar, fisio, dental, gine/obst, nutri, psico, pediatría, dermatología y más módulos.',
+    id: 'chat-paciente',
+    title: 'Mensajes clínica ↔ paciente',
+    description: 'Chat seguro entre el espacio y el paciente (web y apps). Respeta bloqueos del vínculo.',
     status: 'live',
   },
   {
@@ -330,19 +290,37 @@ export const CURRENT_CAPABILITIES = [
   {
     id: 'analiticas',
     title: 'Analíticas del consultorio',
-    description: 'Citas, cancelaciones, pacientes nuevos e inactivos, e ingresos del periodo.',
+    description: 'Citas, cancelaciones, pacientes nuevos e inactivos, y caja del periodo. Comparas contra el periodo anterior.',
     status: 'live',
   },
   {
     id: 'presupuestos',
     title: 'Presupuestos Clínicos',
-    description: 'Cotizaciones compartibles al portal del paciente.',
+    description: 'Generación de presupuestos y cotizaciones. Puedes compartirlos para que el paciente los visualice en su portal.',
     status: 'live',
   },
   {
     id: 'calendario',
     title: 'Agenda y Calendario',
-    description: 'Citas y eventos con vista calendario. Gestión por sucursal y reglas del portal.',
+    description: 'Citas y eventos con vista calendario. Gestión por sucursal.',
+    status: 'live',
+  },
+  {
+    id: 'recetas',
+    title: 'Recetas con e.Firma + QR',
+    description: 'Recetas firmadas, PDF descargable y verificación pública por código QR.',
+    status: 'live',
+  },
+  {
+    id: 'firma-remota',
+    title: 'Firma remota del paciente',
+    description: 'Envía un enlace seguro para que el paciente firme consentimientos u otros documentos desde el móvil.',
+    status: 'live',
+  },
+  {
+    id: 'especialidades',
+    title: 'Expedientes por especialidad',
+    description: 'Cardio, pulmonar, fisio, dental, gine/obst, nutri, psico, pediatría, dermatología y más módulos activables.',
     status: 'live',
   },
   {
@@ -360,87 +338,77 @@ export const CURRENT_CAPABILITIES = [
   {
     id: 'laboratorios',
     title: 'Órdenes de Laboratorio + Portal',
-    description: 'Órdenes, seguimiento por estatus y portal de laboratorio con enlace seguro.',
+    description: 'Creación de órdenes, seguimiento por estatus y portal de laboratorio con enlace seguro.',
     status: 'live',
   },
   {
     id: 'inventario',
     title: 'Inventario Clínico',
-    description: 'Stock, movimientos e alertas de inventario bajo por sucursal.',
+    description: 'Control de stock, movimientos, historial y alertas de inventario bajo por sucursal.',
     status: 'live',
   },
   {
     id: 'facturacion-cfdi',
     title: 'Facturación CFDI 4.0',
-    description: 'Solicitud, timbrado, descarga PDF/XML y reenvío por correo (add-on).',
+    description: 'Flujo de solicitud, timbrado, descarga de PDF/XML y reenvío por correo.',
     status: 'live',
   },
   {
     id: 'dental-avanzado',
     title: 'Dental Avanzado',
-    description: 'Odontograma, radiografías y modelo dental en el expediente.',
+    description: 'Odontograma, radiografías y modelo dental integrado al expediente del paciente.',
     status: 'live',
   },
   {
     id: 'workspace',
     title: 'Varios consultorios en una cuenta',
-    description: 'Un login para hospitales distintos y tu práctica particular; cambias de espacio en segundos.',
+    description: 'Médica Sur, Ángeles o tu consultorio particular: un login y cambias de agenda en segundos.',
+    status: 'live',
+  },
+  {
+    id: 'bienestar',
+    title: 'Bienestar del paciente',
+    description: 'Plan personal de pasos, hidratación y tips de bienestar en la experiencia del paciente.',
     status: 'live',
   },
 ]
 
-/** Visión de producto (SEO + UX): hacia dónde construimos, sin inventar fechas falsas. */
-export const PRODUCT_VISION = {
-  headline: 'El sistema clínico que une espacio, paciente y especialidad',
-  body:
-    'Construimos LynkaMed para que clínicas y consultorios en México operen expediente, agenda, caja y relación con el paciente en una sola nube — con módulos por especialidad, cumplimiento NOM y apps para el día a día.',
-  pillars: [
-    {
-      title: 'Operación clínica real',
-      text: 'Expedientes por especialidad, checklist NOM, retención de 5 años y firma digital — no solo un calendario.',
-    },
-    {
-      title: 'Paciente en el centro',
-      text: 'Portal, app, pasaporte QR, mensajes, directorio con reseñas verificadas y recetas verificables.',
-    },
-    {
-      title: 'Crecer sin migrar',
-      text: 'Multi-workspace, multi-sucursal y add-ons (CFDI, módulos) para escalar cuando tu práctica lo pida.',
-    },
-  ],
-}
-
 // ============================================================
-// ROADMAP - Próximamente (En desarrollo)
+// ROADMAP — solo lo que aún no está en producción
 // ============================================================
 export const ROADMAP_FEATURES = [
   {
+    id: 'app-paciente',
+    title: 'App paciente iOS y Android',
+    description:
+      'App nativa del paciente: pasaporte QR, citas, documentos, bienestar y directorio. Lanzamiento público pronto.',
+    date: 'Pronto',
+    status: 'launch',
+    image: '/app-paciente-home.jpg',
+  },
+  {
     id: 'vademecum',
     title: 'Vademécum Integrado',
-    description: 'Catálogo terapéutico para búsqueda rápida de medicamentos al recetar.',
+    description: 'Catálogo terapéutico para búsqueda rápida de medicamentos al emitir recetas.',
     date: '2026',
     status: 'development',
+    image: '/vademecum.jpg',
   },
   {
     id: 'ia-clinica',
-    title: 'IA de apoyo clínico',
-    description: 'Más asistencia en documentación y apoyo a decisión; dictado y tips ya en producción.',
+    title: 'IA clínica avanzada',
+    description: 'Apoyo clínico con IA más profundo: predicción de riesgo y asistencia en documentación.',
     date: '2026–2027',
     status: 'development',
+    image: '/IA.jpg',
   },
   {
     id: 'telemedicina',
     title: 'Telemedicina',
-    description: 'Videoconsulta integrada al expediente y a la agenda (apps ya publicadas como base).',
+    description: 'Videoconsulta integrada al expediente y a la agenda del paciente.',
     date: '2027',
     status: 'planned',
-  },
-  {
-    id: 'mas-especialidades',
-    title: 'Más expedientes de especialidad',
-    description: 'Ampliamos módulos (p. ej. neurología, gastro) con el mismo kit de formularios.',
-    date: 'Continuo',
-    status: 'development',
+    image: '/telemedicina.jpg',
   },
 ]
 
@@ -453,15 +421,15 @@ export const PRICING_PLANS = [
     id: 'consultorio',
     name: 'Consultorio Privado',
     description: 'Para profesionales de salud independientes',
-    price: 'Desde $1,299',
+    price: '$1,800',
     period: '+ IVA / mes',
     features: [
       'Expediente clínico NOM-024',
       'Agenda en línea',
-      'Portal y app del paciente',
-      'Pasaporte QR y directorio',
-      'Recetas con e.firma y QR',
-      'Caja, chat y analíticas',
+      'Portal del paciente con OTP',
+      'Recetas con e.firma',
+      'Caja y finanzas',
+      'PDF y envío por correo',
       'Soporte incluido',
     ],
     cta: 'Iniciar prueba',
@@ -471,15 +439,15 @@ export const PRICING_PLANS = [
     id: 'dental',
     name: 'Clínica Dental',
     description: 'Odontograma y multi-sucursal',
-    price: 'Desde $1,999',
-    period: '+ IVA / mes',
+    price: '$18,000',
+    period: '+ IVA / año',
     features: [
       'Todo lo del Consultorio',
       'Odontograma interactivo',
       'Historia clínica dental',
       'Radiografías digitales',
       'Multi-sucursal disponible',
-      'Sucursales adicionales cotizadas',
+      '+$10,000/año por sucursal',
     ],
     cta: 'Solicitar demo',
     popular: false,
@@ -667,31 +635,25 @@ export const FAQ_ITEMS = [
     id: 'portal-paciente',
     question: '¿Cómo funciona el portal del paciente?',
     answer:
-      'Cada paciente puede acceder a un portal web seguro con contraseña o código OTP, y también a la app móvil.\n\nDesde ahí puede:\n- Ver y gestionar citas\n- Consultar documentos compartidos\n- Mensajear con la clínica\n- Usar el pasaporte de salud (QR)\n- Explorar el directorio y dejar reseñas si tuvo cita o vínculo\n- Revisar presupuestos y bienestar\n\nEsto reduce WhatsApp informal y mejora la continuidad clínica.',
-  },
-  {
-    id: 'directorio-reseñas',
-    question: '¿LynkaMed tiene directorio y reseñas?',
-    answer:
-      'Sí. Cada sucursal (o tu consultorio) puede aparecer en el mapa del portal y de la app paciente.\n\n- Pin editable desde el panel (mismo flujo que el alta)\n- Valoraciones al espacio o a un médico del equipo\n- Solo pacientes vinculados o con cita confirmada/completada pueden valorar\n- La clínica puede responder u ocultar comentarios\n\nAsí el descubrimiento y la reputación viven dentro del producto, no solo en redes.',
+      'Cada paciente puede acceder a un portal web seguro con contraseña o código OTP.\n\nDesde ahí puede:\n- Ver citas y confirmar asistencia\n- Consultar documentos compartidos\n- Buscar clínicas en el directorio y dejar reseñas\n- Mensajear con su clínica\n- Revisar presupuestos y resultados disponibles\n- Completar su pasaporte de salud (datos ICE)\n\nPronto también en app iOS y Android.',
   },
   {
     id: 'qr-paciente',
-    question: '¿Cómo funciona la vinculación por QR y el pasaporte?',
+    question: '¿Cómo funciona la vinculación por QR?',
     answer:
-      'Cada paciente tiene un identificador QR (pasaporte de salud).\n\nSirve para dos cosas:\n- Vincularse rápido a una clínica o consultorio LynkaMed sin duplicar el expediente\n- En emergencia, mostrar datos ICE limitados (grupo sanguíneo, alergias, contacto) sin exponer el historial completo\n\nEl staff puede escanear desde la app clínica o el panel web.',
+      'Cada paciente cuenta con un Pasaporte de Salud con QR único.\n\nCuando llega a consulta o a una sede participante:\n- Se escanea el código en recepción\n- Se vincula al espacio sin recrear el expediente\n- En emergencia, muestra datos críticos autorizados (grupo sanguíneo, alergias, contacto)\n\nAsí reduces duplicados y ganas continuidad clínica entre espacios.',
   },
   {
     id: 'diferencia-mercado',
     question: '¿Cuál es la diferencia con otros sistemas en el mercado?',
     answer:
-      'LynkaMed está pensado para operación clínica real en México, no solo para agendar citas.\n\nIntegra en una sola plataforma:\n- Expediente por especialidad (incl. pediatría y dermatología)\n- Agenda y multi-sucursal / multi-workspace\n- Portal + apps paciente y clínica\n- Pasaporte QR, directorio y reseñas\n- Caja, CFDI, inventario y chat\n- Recetas con firma y verificación por QR\n\nDesarrollamos con retroalimentación directa de profesionales de salud.',
+      'La diferencia principal es que LynkaMed está pensado para operación clínica real, no solo para agendar citas.\n\nIntegra en una sola plataforma:\n- Expediente clínico por especialidad\n- Agenda multi-sucursal y multi-workspace\n- Portal y app del paciente\n- Pasaporte de salud QR\n- Directorio y reseñas\n- Caja, inventario y facturación CFDI\n- Mensajería clínica ↔ paciente\n\nAdemás, desarrollamos con retroalimentación directa de profesionales de salud y clínicas.',
   },
   {
     id: 'futuro-producto',
     question: '¿Hacia dónde va el producto?',
     answer:
-      'Queremos ser el sistema clínico de referencia para Latinoamérica: expediente + operación + relación con el paciente en una nube.\n\nYa entregamos apps, chat, directorio/reseñas, firma remota y más especialidades. El roadmap sigue con:\n- Vademécum integrado\n- Más IA de apoyo clínico\n- Telemedicina sobre la base móvil actual\n- Más módulos de especialidad\n\nPriorizamos por necesidad real de clínicas y consultorios, no por moda.',
+      'Construimos el sistema clínico más completo y útil para México y Latinoamérica.\n\nYa entregamos: mensajería paciente-clínica, directorio con reseñas, pediatría y dermatología, firma remota, verificación de recetas por QR y pasaporte de salud.\n\nPróximo: lanzamiento público de la app paciente iOS/Android, vademécum, IA clínica avanzada y telemedicina.\n\nPriorizamos funcionalidades con base en necesidades reales de nuestros clientes.',
   },
   {
     id: 'implementacion-tiempo',
@@ -703,7 +665,7 @@ export const FAQ_ITEMS = [
     id: 'especialidades-modulos',
     question: '¿Pueden activar expedientes por especialidad en una clínica multiespecialidad?',
     answer:
-      'Sí. Ese es uno de los enfoques del producto.\n\nCreamos expedientes por especialidad y los activamos como módulos dentro de la misma operación clínica. Así puedes comenzar con un conjunto de flujos y después crecer sin cambiar de sistema. Pediatría y dermatología ya están disponibles junto a cardio, dental, gine, nutri y más.',
+      'Sí. Ese es uno de los enfoques del producto.\n\nCreamos expedientes por especialidad y los activamos como módulos dentro de la misma operación clínica. Así puedes comenzar con un conjunto de flujos y después crecer sin cambiar de sistema.',
   },
   {
     id: 'soporte-incluye',

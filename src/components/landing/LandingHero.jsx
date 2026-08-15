@@ -12,8 +12,8 @@ const TRUST_ITEMS = [
 ]
 
 const STATS = [
-  { value: '25+', label: 'Tipos de expediente', sub: 'Incl. pediatría y derma' },
-  { value: '3 apps', label: 'Web + paciente + clínica', sub: 'Misma nube' },
+  { value: '+30', label: 'Tipos de expediente', sub: 'Por especialidad médica' },
+  { value: '100%', label: 'En la nube', sub: 'Sin instalar nada' },
   { value: '30 días', label: 'Prueba gratuita', sub: 'Sin tarjeta de crédito' },
 ]
 
@@ -57,24 +57,25 @@ export function LandingHero() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 backdrop-blur-sm">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-400" />
-              <span className="text-xs font-bold uppercase tracking-widest text-blue-300">LynkaMed • Una solución de OSMEN TECH ENTERPRISE</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-blue-300">
+                LynkaMed · App paciente iOS/Android — lanzamiento pronto
+              </span>
             </div>
 
             <h1 className="mt-6 text-[2.8rem] font-extrabold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-[3.5rem]">
-              Lynkamed:{' '}
+              Lynkamed: software médico que se adapta a{' '}
               <span className="relative">
-                <span style={{ color: ELECTRIC }}>software médico</span>
+                <span style={{ color: ELECTRIC }}>tu especialidad</span>
                 <span
                   className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full opacity-60"
                   style={{ background: `linear-gradient(90deg, ${ELECTRIC}, transparent)` }}
                 />
-              </span>{' '}
-              para tu especialidad en México
+              </span>
             </h1>
 
             <p className="mt-6 max-w-md text-lg leading-8 text-slate-400">
-              Expediente NOM-024, agenda, caja, portal y apps. Pasaporte QR, directorio con reseñas
-              y chat — una nube si atiendes en hospital o en tu consultorio.
+              Expediente NOM-024, agenda, caja, portal del paciente y pasaporte de salud.
+              Una sola plataforma si atiendes en varios hospitales o en tu consultorio.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">

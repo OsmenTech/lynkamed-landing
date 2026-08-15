@@ -16,33 +16,33 @@ const SITE = 'https://lynkamed.mx'
 
 const PAGE_META = {
   '/': {
-    title: 'Lynkamed — Software médico NOM-024 para clínicas y consultorios en México',
+    title: 'Lynkamed — Software médico, expediente NOM-024 y app paciente en México',
     description:
-      'Expediente clínico por especialidad, agenda, caja CFDI, portal y apps, pasaporte QR, directorio con reseñas y chat. Software médico en la nube para México. Prueba 30 días gratis.',
+      'Lynkamed: software médico en la nube para clínicas y consultorios. Expediente NOM-024 por especialidad, agenda, caja, pasaporte de salud QR, directorio y portal del paciente. App iOS/Android próximamente. Prueba gratis 30 días.',
   },
   '/beneficios': {
-    title: 'Beneficios | Lynkamed — Operación clínica y paciente conectados',
+    title: 'Beneficios | Lynkamed — Software médico México',
     description:
-      'Cómo Lynkamed mejora la atención: NOM-024, multi-workspace, pasaporte QR, directorio, apps y menos fricción operativa en clínicas y consultorios.',
+      'Beneficios de Lynkamed: expediente NOM-024, multi-workspace, pasaporte QR, portal del paciente y operación multi-sucursal.',
   },
   '/funcionalidades': {
-    title: 'Funcionalidades | Expediente, directorio, apps y caja — Lynkamed',
+    title: 'Funcionalidades | Lynkamed — Expediente, directorio, QR y caja',
     description:
-      'Capacidades en producción: expedientes (pediatría, dermatología, cardio, dental…), agenda, portal, apps, pasaporte QR, reseñas, chat, firma remota, CFDI e inventario.',
+      'Capacidades Lynkamed: expediente por especialidad (pediatría, dermatología), pasaporte QR, directorio con reseñas, mensajería, CFDI y más. App paciente pronto.',
   },
   '/precios': {
-    title: 'Planes y precios | Lynkamed — Desde $999 MXN/mes',
+    title: 'Planes y precios | Lynkamed — Consultorio y clínica',
     description:
-      'Planes Lynkamed para consultorio y clínica según especialidad. 30 días de prueba gratis sin tarjeta.',
+      'Planes y precios de Lynkamed para consultorio y clínica. 30 días de prueba gratis sin tarjeta de crédito.',
   },
   '/faq': {
-    title: 'Preguntas frecuentes | Lynkamed software médico',
+    title: 'Preguntas frecuentes | Lynkamed',
     description:
-      'FAQ: NOM-024, pasaporte QR, directorio y reseñas, portal, migración, multi-sucursal, seguridad y hacia dónde va el producto.',
+      'FAQ Lynkamed: NOM-024, pasaporte de salud, portal del paciente, multi-sucursal, app móvil y soporte.',
   },
   '/contacto': {
     title: 'Contacto | Lynkamed',
-    description: 'Contacta a Lynkamed para demo, cotización o soporte. Software médico para clínicas en México.',
+    description: 'Contacta a Lynkamed para demo, cotización o acceso anticipado a la app paciente.',
   },
   '/laboratorios': {
     title: 'Red de laboratorios | Lynkamed',

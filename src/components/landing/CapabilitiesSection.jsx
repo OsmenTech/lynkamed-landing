@@ -11,6 +11,14 @@ function StatusBadge({ status }) {
       </span>
     )
   }
+  if (status === 'launch') {
+    return (
+      <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 text-xs font-semibold text-blue-700">
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-500" />
+        Lanzamiento pronto
+      </span>
+    )
+  }
   if (status === 'development') {
     return (
       <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">
@@ -84,10 +92,10 @@ export function CapabilitiesSection() {
         <div className="mt-16">
           <div className="mb-8 text-center">
             <h3 className="text-xl font-bold text-slate-900 md:text-2xl">
-              Roadmap — Próximamente
+              Roadmap — lo que viene
             </h3>
             <p className="mt-2 text-slate-600">
-              Funcionalidades en desarrollo activo o planificación.
+              Mensajería, directorio, pediatría y dermatología ya están en producción. Esto es lo siguiente.
             </p>
             <div className="mt-4">
               <button
@@ -115,6 +123,9 @@ export function CapabilitiesSection() {
                         <StatusBadge status={feature.status} />
                       </div>
                       <p className="text-sm text-slate-600">{feature.description}</p>
+                      {feature.date ? (
+                        <p className="mt-1 text-xs font-medium text-slate-500">{feature.date}</p>
+                      ) : null}
                       {feature.note && (
                         <p className="mt-1 text-xs italic text-slate-500">{feature.note}</p>
                       )}
