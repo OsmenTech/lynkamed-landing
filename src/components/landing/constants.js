@@ -371,6 +371,12 @@ export const CURRENT_CAPABILITIES = [
     description: 'Plan personal de pasos, hidratación y tips de bienestar en la experiencia del paciente.',
     status: 'live',
   },
+  {
+    id: 'vademecum',
+    title: 'Vademécum Integrado',
+    description: 'Catálogo terapéutico para búsqueda rápida de medicamentos al emitir recetas.',
+    status: 'live',
+  },
 ]
 
 // ============================================================
@@ -385,14 +391,6 @@ export const ROADMAP_FEATURES = [
     date: 'Pronto',
     status: 'launch',
     image: '/app-paciente-home.jpg',
-  },
-  {
-    id: 'vademecum',
-    title: 'Vademécum Integrado',
-    description: 'Catálogo terapéutico para búsqueda rápida de medicamentos al emitir recetas.',
-    date: '2026',
-    status: 'development',
-    image: '/vademecum.jpg',
   },
   {
     id: 'ia-clinica',
@@ -653,7 +651,7 @@ export const FAQ_ITEMS = [
     id: 'futuro-producto',
     question: '¿Hacia dónde va el producto?',
     answer:
-      'Construimos el sistema clínico más completo y útil para México y Latinoamérica.\n\nYa entregamos: mensajería paciente-clínica, directorio con reseñas, pediatría y dermatología, firma remota, verificación de recetas por QR y pasaporte de salud.\n\nPróximo: lanzamiento público de la app paciente iOS/Android, vademécum, IA clínica avanzada y telemedicina.\n\nPriorizamos funcionalidades con base en necesidades reales de nuestros clientes.',
+      'Construimos el sistema clínico más completo y útil para México y Latinoamérica.\n\nYa entregamos: mensajería paciente-clínica, directorio con reseñas, pediatría y dermatología, firma remota, verificación de recetas por QR, pasaporte de salud y vademécum integrado.\n\nPróximo: lanzamiento público de la app paciente iOS/Android, IA clínica avanzada y telemedicina.\n\nPriorizamos funcionalidades con base en necesidades reales de nuestros clientes.',
   },
   {
     id: 'implementacion-tiempo',

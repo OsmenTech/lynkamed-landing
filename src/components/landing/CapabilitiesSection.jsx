@@ -95,7 +95,7 @@ export function CapabilitiesSection() {
               Roadmap — lo que viene
             </h3>
             <p className="mt-2 text-slate-600">
-              Mensajería, directorio, pediatría y dermatología ya están en producción. Esto es lo siguiente.
+              Mensajería, directorio, pediatría, dermatología y vademécum ya están en producción. Esto es lo siguiente.
             </p>
             <div className="mt-4">
               <button

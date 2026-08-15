@@ -96,6 +96,7 @@ export function SeoJsonLd() {
         'Control de caja y finanzas',
         'Facturación CFDI 4.0',
         'Multi-workspace (varios consultorios / hospitales)',
+        'Vademécum integrado en recetas',
         'App paciente iOS y Android (lanzamiento pronto)',
       ],
       provider: { '@id': `${SITE_URL}/#organization` },

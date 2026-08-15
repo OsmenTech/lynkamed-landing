@@ -27,6 +27,7 @@ const CAPABILITY_META = {
   'dental-avanzado': { Icon: IconDental, highlights: ['Odontograma', 'Radiografías'] },
   workspace: { Icon: IconShare, highlights: ['Médica Sur + Ángeles + particular', 'Un login, varios espacios'] },
   bienestar: { Icon: IconSparkles, highlights: ['Pasos e hidratación', 'Tips de bienestar'] },
+  vademecum: { Icon: IconSignature, highlights: ['Búsqueda en recetas', 'Ficha del medicamento'] },
 }
 
 const CLINIC_SHOWCASE = [
@@ -253,7 +254,7 @@ export default function FuncionalidadesPage() {
               <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-blue-600">Hacia dónde vamos</span>
               <h2 className="mt-3 text-4xl font-extrabold tracking-tight text-slate-900">Roadmap actualizado</h2>
               <p className="mt-2 max-w-xl text-slate-600">
-                Chat paciente, directorio, pediatría y dermatología ya están disponibles. Esto es lo siguiente.
+                Chat paciente, directorio, pediatría, dermatología y vademécum ya están disponibles. Esto es lo siguiente.
               </p>
             </div>
           </AnimatedSection>
