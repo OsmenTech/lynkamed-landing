@@ -7,7 +7,7 @@ import { LandingHero } from './components/landing/LandingHero.jsx'
 import { MultiWorkspaceSection } from './components/landing/MultiWorkspaceSection.jsx'
 import { MobileStickyCta } from './components/landing/MobileStickyCta.jsx'
 import { IconCalendar, IconQrCode, IconUsers } from './components/landing/Icons.jsx'
-import { ELECTRIC, CALENDLY_DEMO_URL, CALENDLY_DEMO_LABEL } from './components/landing/constants.js'
+import { ELECTRIC, CALENDLY_DEMO_LABEL, calendlyDemoUrl, registroUrl } from './components/landing/constants.js'
 import { HiOutlineLightningBolt, HiOutlineShieldCheck, HiOutlineChartBar } from 'react-icons/hi'
 
 const FEATURE_CARDS = [
@@ -23,7 +23,7 @@ const FEATURE_CARDS = [
   },
   {
     title: 'Agenda, caja y directorio',
-    description: 'Citas multi-sucursal, finanzas del periodo y mapa con reseñas de tu espacio o de tus médicos.',
+    description: 'Citas multi-sucursal, finanzas del periodo y mapa de tu espacio.',
     Icon: IconCalendar,
   },
 ]
@@ -145,14 +145,14 @@ export default function LandingPage() {
                 </div>
                 <div className="flex shrink-0 gap-3">
                   <a
-                    href="https://app.lynkamed.mx/registro"
+                    href={registroUrl()}
                     className="btn-glow button-press inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm font-bold text-white"
                     style={{ backgroundColor: ELECTRIC }}
                   >
                     Empezar gratis →
                   </a>
                   <a
-                    href={CALENDLY_DEMO_URL}
+                    href={calendlyDemoUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="button-press inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-700 hover:bg-slate-100"
@@ -187,7 +187,7 @@ export default function LandingPage() {
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <a
-                href="https://app.lynkamed.mx/registro"
+                href={registroUrl()}
                 className="btn-glow button-press inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-white"
                 style={{ backgroundColor: ELECTRIC }}
               >
@@ -197,7 +197,7 @@ export default function LandingPage() {
                 </svg>
               </a>
               <a
-                href={CALENDLY_DEMO_URL}
+                href={calendlyDemoUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="button-press inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/8 px-8 py-4 text-base font-semibold text-white backdrop-blur hover:bg-white/14"

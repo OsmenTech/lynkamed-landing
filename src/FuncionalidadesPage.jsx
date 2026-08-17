@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { AnimatedSection } from './components/landing/AnimatedSection.jsx'
 import { IconCalendar, IconCash, IconDental, IconHeartPulse, IconLayers, IconLungs, IconShare, IconSignature, IconSparkles, IconUsers } from './components/landing/Icons.jsx'
-import { CURRENT_CAPABILITIES, ROADMAP_FEATURES, CLINIC_TYPES, CONSULTORIO_TYPES } from './components/landing/constants.js'
+import { CURRENT_CAPABILITIES, ROADMAP_FEATURES, CLINIC_TYPES, CONSULTORIO_TYPES, registroUrl } from './components/landing/constants.js'
 import { AppLaunchSection } from './components/landing/AppLaunchSection.jsx'
 import { MarketingPageLayout } from './components/landing/MarketingPageLayout.jsx'
 
@@ -10,7 +10,7 @@ const LIVE_CAPABILITIES = CURRENT_CAPABILITIES.filter((item) => item.status === 
 const CAPABILITY_META = {
   portal: { Icon: IconUsers, highlights: ['Acceso con OTP', 'Documentos y mensajes'] },
   pasaporte: { Icon: IconShare, highlights: ['QR en recepción', 'Datos ICE'] },
-  directorio: { Icon: IconLayers, highlights: ['Mapa de sedes', 'Reseñas espacio/médico'] },
+  directorio: { Icon: IconLayers, highlights: ['Mapa de sedes', 'Ubicación y agenda'] },
   'chat-paciente': { Icon: IconUsers, highlights: ['Inbox clínica', 'Portal y app'] },
   caja: { Icon: IconCash, highlights: ['Pagos y egresos', 'Recibos digitales'] },
   analiticas: { Icon: IconLayers, highlights: ['Ingresos del periodo', 'Comparativa'] },
@@ -69,7 +69,7 @@ export default function FuncionalidadesPage() {
     <MarketingPageLayout
       eyebrow="Funcionalidades"
       title="Capacidades clínicas listas para operar hoy"
-      description="Expediente por especialidad, pasaporte QR, directorio con reseñas, mensajería paciente-clínica, caja, inventario y CFDI. LynkaMed conecta la operación real en una sola plataforma."
+      description="Expediente por especialidad, pasaporte QR, directorio con mapa, mensajería paciente-clínica, caja, inventario y CFDI. LynkaMed conecta la operación real en una sola plataforma."
     >
       <section className="bg-[#f8fafc] px-5 py-16 md:px-8 md:py-20">
         <div className="mx-auto max-w-[1280px]">
@@ -205,7 +205,7 @@ export default function FuncionalidadesPage() {
                       ) : null}
                     </div>
 
-                    <a href="https://app.lynkamed.mx/registro" className="mt-auto pt-6 inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300">
+                    <a href={registroUrl()} className="mt-auto pt-6 inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300">
                       Empezar gratis →
                     </a>
                   </article>
@@ -235,7 +235,7 @@ export default function FuncionalidadesPage() {
                       </ul>
                     </div>
 
-                    <a href="https://app.lynkamed.mx/registro" className="mt-auto pt-6 inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300">
+                    <a href={registroUrl()} className="mt-auto pt-6 inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300">
                       Empezar gratis →
                     </a>
                   </article>

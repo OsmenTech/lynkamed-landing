@@ -52,7 +52,7 @@ export function SeoJsonLd() {
       downloadUrl: APP_URL,
       image: `${SITE_URL}/app-paciente-home.jpg`,
       description:
-        'Lynkamed es el software médico en la nube para médicos y clínicas en México. Expedientes clínicos por especialidad (NOM-024), agenda, caja, pasaporte de salud QR, directorio con reseñas y portal del paciente. App iOS y Android próximamente.',
+        'Lynkamed es el software médico en la nube para médicos y clínicas en México. Expedientes clínicos por especialidad (NOM-024), agenda, caja, pasaporte de salud QR, directorio con mapa y portal del paciente. App iOS y Android próximamente.',
       inLanguage: 'es-MX',
       offers: [
         {
@@ -89,7 +89,7 @@ export function SeoJsonLd() {
         'Agenda médica multi-sucursal',
         'Portal del paciente',
         'Pasaporte de salud con QR',
-        'Directorio de clínicas y reseñas',
+        'Directorio de clínicas y mapa',
         'Mensajería clínica ↔ paciente',
         'Recetas con firma electrónica y verificación QR',
         'Pediatría y dermatología',

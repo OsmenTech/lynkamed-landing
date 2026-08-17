@@ -28,7 +28,7 @@ const PAGE_META = {
   '/funcionalidades': {
     title: 'Funcionalidades | Lynkamed — Expediente, directorio, QR y caja',
     description:
-      'Capacidades Lynkamed: expediente por especialidad (pediatría, dermatología), pasaporte QR, directorio con reseñas, mensajería, CFDI y más. App paciente pronto.',
+      'Capacidades Lynkamed: expediente por especialidad (pediatría, dermatología), pasaporte QR, directorio con mapa, mensajería, CFDI y más. App paciente pronto.',
   },
   '/precios': {
     title: 'Planes y precios | Lynkamed — Consultorio y clínica',

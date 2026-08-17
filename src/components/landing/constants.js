@@ -13,6 +13,40 @@ export const ELECTRIC_HOVER = '#0052cc'
 
 /** Demo comercial — Calendly (15 min) */
 export const CALENDLY_DEMO_URL = 'https://calendly.com/osnayama8/30min'
+export const REGISTRO_URL = 'https://app.lynkamed.mx/registro'
+
+const REF_STORAGE_KEY = 'lynkamed_referral_code'
+
+export function captureReferralCode() {
+  if (typeof window === 'undefined') return ''
+  const fromQs = (new URLSearchParams(window.location.search).get('ref') || '').trim().toUpperCase()
+  if (fromQs) {
+    try { localStorage.setItem(REF_STORAGE_KEY, fromQs) } catch {}
+    return fromQs
+  }
+  try { return (localStorage.getItem(REF_STORAGE_KEY) || '').trim().toUpperCase() } catch { return '' }
+}
+
+export function registroUrl(base = REGISTRO_URL) {
+  const code = captureReferralCode()
+  try {
+    const u = new URL(base)
+    if (code) u.searchParams.set('ref', code)
+    return u.toString()
+  } catch {
+    return base
+  }
+}
+
+export function calendlyDemoUrl(ref) {
+  const code = (ref || captureReferralCode()).trim().toUpperCase()
+  if (!code) return CALENDLY_DEMO_URL
+  const u = new URL(CALENDLY_DEMO_URL)
+  u.searchParams.set('utm_source', 'lynkamed')
+  u.searchParams.set('utm_medium', 'referral')
+  u.searchParams.set('utm_content', code)
+  return u.toString()
+}
 export const CALENDLY_DEMO_LABEL = 'Agendar Demo (15 min)'
 
 // Navegación
@@ -271,8 +305,8 @@ export const CURRENT_CAPABILITIES = [
   },
   {
     id: 'directorio',
-    title: 'Directorio y reseñas',
-    description: 'Mapa de sedes, pin editable y valoraciones de espacio o médico. Respuesta y moderación desde el panel.',
+    title: 'Directorio y mapa',
+    description: 'Mapa de sedes y pin editable. Ubicación, especialidades y agenda — sin reseñas públicas.',
     status: 'live',
   },
   {
@@ -633,7 +667,7 @@ export const FAQ_ITEMS = [
     id: 'portal-paciente',
     question: '¿Cómo funciona el portal del paciente?',
     answer:
-      'Cada paciente puede acceder a un portal web seguro con contraseña o código OTP.\n\nDesde ahí puede:\n- Ver citas y confirmar asistencia\n- Consultar documentos compartidos\n- Buscar clínicas en el directorio y dejar reseñas\n- Mensajear con su clínica\n- Revisar presupuestos y resultados disponibles\n- Completar su pasaporte de salud (datos ICE)\n\nPronto también en app iOS y Android.',
+      'Cada paciente puede acceder a un portal web seguro con contraseña o código OTP.\n\nDesde ahí puede:\n- Ver citas y confirmar asistencia\n- Consultar documentos compartidos\n- Buscar clínicas en el directorio (mapa y ubicación)\n- Mensajear con su clínica\n- Revisar presupuestos y resultados disponibles\n- Completar su pasaporte de salud (datos ICE)\n\nPronto también en app iOS y Android.',
   },
   {
     id: 'qr-paciente',
@@ -645,13 +679,13 @@ export const FAQ_ITEMS = [
     id: 'diferencia-mercado',
     question: '¿Cuál es la diferencia con otros sistemas en el mercado?',
     answer:
-      'La diferencia principal es que LynkaMed está pensado para operación clínica real, no solo para agendar citas.\n\nIntegra en una sola plataforma:\n- Expediente clínico por especialidad\n- Agenda multi-sucursal y multi-workspace\n- Portal y app del paciente\n- Pasaporte de salud QR\n- Directorio y reseñas\n- Caja, inventario y facturación CFDI\n- Mensajería clínica ↔ paciente\n\nAdemás, desarrollamos con retroalimentación directa de profesionales de salud y clínicas.',
+      'La diferencia principal es que LynkaMed está pensado para operación clínica real, no solo para agendar citas.\n\nIntegra en una sola plataforma:\n- Expediente clínico por especialidad\n- Agenda multi-sucursal y multi-workspace\n- Portal y app del paciente\n- Pasaporte de salud QR\n- Directorio y mapa\n- Caja, inventario y facturación CFDI\n- Mensajería clínica ↔ paciente\n\nAdemás, desarrollamos con retroalimentación directa de profesionales de salud y clínicas.',
   },
   {
     id: 'futuro-producto',
     question: '¿Hacia dónde va el producto?',
     answer:
-      'Construimos el sistema clínico más completo y útil para México y Latinoamérica.\n\nYa entregamos: mensajería paciente-clínica, directorio con reseñas, pediatría y dermatología, firma remota, verificación de recetas por QR, pasaporte de salud y vademécum integrado.\n\nPróximo: lanzamiento público de la app paciente iOS/Android, IA clínica avanzada y telemedicina.\n\nPriorizamos funcionalidades con base en necesidades reales de nuestros clientes.',
+      'Construimos el sistema clínico más completo y útil para México y Latinoamérica.\n\nYa entregamos: mensajería paciente-clínica, directorio con mapa, pediatría y dermatología, firma remota, verificación de recetas por QR, pasaporte de salud y vademécum integrado.\n\nPróximo: lanzamiento público de la app paciente iOS/Android, IA clínica avanzada y telemedicina.\n\nPriorizamos funcionalidades con base en necesidades reales de nuestros clientes.',
   },
   {
     id: 'implementacion-tiempo',
