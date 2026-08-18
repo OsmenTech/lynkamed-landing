@@ -58,12 +58,12 @@ export function SeoJsonLd() {
         {
           '@type': 'Offer',
           name: 'Consultorio',
-          price: '999',
+          price: '699',
           priceCurrency: 'MXN',
           priceValidUntil: '2027-12-31',
           availability: 'https://schema.org/InStock',
           url: `${APP_URL}/registro?tipo=consultorio`,
-          description: 'Plan consultorio desde $999 MXN/mes. 30 días de prueba gratis sin tarjeta.',
+          description: 'Plan consultorio desde $699 MXN/mes (terapias). Médico/especialidad $899. 3 usuarios. 30 días gratis sin tarjeta.',
         },
         {
           '@type': 'Offer',
@@ -73,6 +73,7 @@ export function SeoJsonLd() {
           priceValidUntil: '2027-12-31',
           availability: 'https://schema.org/InStock',
           url: `${APP_URL}/registro?tipo=clinica&especialidad=dental`,
+          description: 'Clínica dental $1,699/mes en lanzamiento (lista $2,299). 15 usuarios.',
         },
         {
           '@type': 'Offer',

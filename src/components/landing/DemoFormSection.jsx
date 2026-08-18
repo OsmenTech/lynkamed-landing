@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import {
   CALENDLY_DEMO_LABEL,
-  CALENDLY_DEMO_URL,
+  calendlyDemoUrl,
   ELECTRIC,
   ESPECIALIDADES_CONSULTORIO,
   MODULOS_CLINICA,
@@ -14,7 +14,7 @@ const SOLICITUD_CARDS = [
     title: CALENDLY_DEMO_LABEL,
     description: 'Elige fecha y hora en Calendly. Demo en línea de 15 minutos, sin compromiso.',
     Icon: IconCalendar,
-    href: CALENDLY_DEMO_URL,
+    hrefKey: 'calendly',
     external: true,
   },
   {
@@ -176,11 +176,11 @@ export function DemoFormSection({ hidePrueba = false }) {
                 </>
               )
 
-              if (card.external && card.href) {
+              if (card.external && card.hrefKey === 'calendly') {
                 return (
                   <a
                     key={card.id}
-                    href={card.href}
+                    href={calendlyDemoUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex h-full flex-col rounded-2xl border border-[#0066ff] bg-white p-8 shadow-sm ring-2 ring-[#0066ff]/15 transition-all hover:-translate-y-0.5 hover:shadow-md"
@@ -229,7 +229,7 @@ export function DemoFormSection({ hidePrueba = false }) {
           <p className="mt-1 text-sm text-slate-600">También puedes escribirnos por correo o WhatsApp, o agendar demo en Calendly.</p>
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <a
-              href={CALENDLY_DEMO_URL}
+              href={calendlyDemoUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-lg bg-[#0066ff] px-4 py-2.5 text-sm font-semibold text-white hover:brightness-110"
@@ -334,7 +334,7 @@ export function DemoFormSection({ hidePrueba = false }) {
 
                   {isPrueba ? (
                     <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-                      La prueba gratuita aplica solo para <strong>profesionales de salud independientes</strong>, con un máximo sugerido de <strong>15 pacientes</strong> y <strong>5 usuarios</strong>.
+                      La prueba gratuita aplica solo para <strong>profesionales de salud independientes</strong>, con un máximo sugerido de <strong>15 pacientes</strong> y <strong>3 usuarios</strong>.
                     </div>
                   ) : null}
                 </>

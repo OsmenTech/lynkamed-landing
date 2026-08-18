@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ELECTRIC, ELECTRIC_HOVER, CALENDLY_DEMO_URL, CALENDLY_DEMO_LABEL } from './constants.js'
+import { ELECTRIC, ELECTRIC_HOVER, calendlyDemoUrl, CALENDLY_DEMO_LABEL, registroUrl } from './constants.js'
 import { HiOutlineDocumentText } from 'react-icons/hi'
 import { BsCalendar3 } from 'react-icons/bs'
 import { VideoDemo } from './VideoDemo.jsx'
@@ -80,7 +80,7 @@ export function LandingHero() {
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
-                href={CALENDLY_DEMO_URL}
+                href={calendlyDemoUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-glow button-press group inline-flex items-center gap-2.5 rounded-xl px-7 py-4 text-[15px] font-bold text-white shadow-xl shadow-blue-600/30"
@@ -94,7 +94,7 @@ export function LandingHero() {
                 </svg>
               </a>
               <a
-                href="https://app.lynkamed.mx/registro"
+                href={registroUrl()}
                 className="button-press inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-4 text-[15px] font-semibold text-slate-200 backdrop-blur-sm transition hover:border-white/20 hover:bg-white/10"
               >
                 Empezar gratis — 30 días

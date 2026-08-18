@@ -21,7 +21,7 @@ export function captureReferralCode() {
   if (typeof window === 'undefined') return ''
   const fromQs = (new URLSearchParams(window.location.search).get('ref') || '').trim().toUpperCase()
   if (fromQs) {
-    try { localStorage.setItem(REF_STORAGE_KEY, fromQs) } catch {}
+    try { localStorage.setItem(REF_STORAGE_KEY, fromQs) } catch { /* private mode */ }
     return fromQs
   }
   try { return (localStorage.getItem(REF_STORAGE_KEY) || '').trim().toUpperCase() } catch { return '' }
@@ -625,7 +625,7 @@ export const FAQ_ITEMS = [
     id: 'que-incluye',
     question: '¿Qué incluye el precio del consultorio privado?',
     answer:
-      'Incluye los módulos necesarios para operar un consultorio privado desde el primer día.\n\n- Expediente clínico electrónico conforme a NOM-024\n- Agenda en línea\n- Portal del paciente\n- Recetas con firma electrónica\n- Caja y finanzas básicas\n- Generación de presupuestos\n- Generación de PDFs\n- Soporte técnico y acompañamiento inicial\n\nLa facturación CFDI se cotiza como complemento según el volumen de facturación y el tipo de operación.',
+      'Incluye los módulos necesarios para operar un consultorio privado desde el primer día (hasta 3 usuarios por espacio).\n\n- Expediente clínico electrónico conforme a NOM-024\n- Agenda en línea\n- Portal del paciente\n- Recetas con firma electrónica\n- Caja y finanzas básicas\n- Generación de presupuestos\n- Generación de PDFs\n- Soporte técnico y acompañamiento inicial\n\nPuedes agregar otro consultorio en la misma cuenta con precio preferencial (~50% del plan base). La facturación CFDI se cotiza como complemento según el volumen de facturación.',
   },
   {
     id: 'migracion',
@@ -637,7 +637,7 @@ export const FAQ_ITEMS = [
     id: 'sucursales',
     question: '¿Puedo agregar más sucursales a mi clínica?',
     answer:
-      'Sí. LynkaMed está preparado para operación multi-sucursal.\n\nCada sede puede tener:\n- Usuarios y roles propios\n- Agenda independiente\n- Caja separada\n- Configuración operativa por sucursal\n\nLa activación de nuevas sucursales se cotiza según la estructura de tu clínica.',
+      'Sí. LynkaMed está preparado para operación multi-sucursal.\n\nCada sede puede tener:\n- Usuarios y roles propios\n- Agenda independiente\n- Caja separada\n- Configuración operativa por sucursal\n\nLas sucursales adicionales se contratan en el panel (~50% del plan base de tu clínica).',
   },
   {
     id: 'varios-hospitales',

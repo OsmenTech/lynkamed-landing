@@ -27,8 +27,9 @@ const HIGHLIGHTS = [
 ]
 
 const COTIZACION_ITEMS = [
-  { text: 'Cotizamos según **usuarios activos**, no por una estructura fija desde el inicio.' },
-  { text: 'El precio varía según **especialidades habilitadas** y número de sedes.' },
+  { text: 'El **precio base** depende de la especialidad principal (consultorio o clínica).' },
+  { text: 'Puedes sumar **especialidades secundarias** como add-ons desde $299/mes.' },
+  { text: '**Otro consultorio** o **sucursal extra** cuesta ~50% del plan base correspondiente.' },
   { text: 'Durante lanzamiento, la **migración de datos se incluye sin costo**.' },
   { text: 'CFDI es un add-on: el costo depende de tu **volumen mensual de facturas**.' },
 ]
@@ -80,7 +81,22 @@ export default function PreciosPage() {
         </div>
       </section>
 
-      {/* Cotización clínicas */}
+      {/* Detalle comercial */}
+      <section className="border-t border-slate-100 bg-slate-50 px-5 py-14 md:px-8 md:py-16">
+        <div className="mx-auto max-w-3xl">
+          <AnimatedSection>
+            <h2 className="text-xl font-bold text-slate-900 md:text-2xl">Cómo se compone tu plan</h2>
+            <ul className="mt-6 space-y-3 text-sm leading-relaxed text-slate-600">
+              {COTIZACION_ITEMS.map((item) => (
+                <li key={item.text} className="flex gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" />
+                  <BoldText text={item.text} />
+                </li>
+              ))}
+            </ul>
+          </AnimatedSection>
+        </div>
+      </section>
     </MarketingPageLayout>
   )
 }

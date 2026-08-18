@@ -1,7 +1,7 @@
 import { AnimatedSection } from './components/landing/AnimatedSection.jsx'
 import { DemoFormSection } from './components/landing/DemoFormSection.jsx'
 import { MarketingPageLayout } from './components/landing/MarketingPageLayout.jsx'
-import { CALENDLY_DEMO_LABEL, CALENDLY_DEMO_URL, NAVY } from './components/landing/constants.js'
+import { CALENDLY_DEMO_LABEL, NAVY, calendlyDemoUrl, registroUrl } from './components/landing/constants.js'
 import { FiZap } from 'react-icons/fi'
 import { FaWhatsapp } from 'react-icons/fa'
 import { HiOutlineMail, HiOutlineCalendar } from 'react-icons/hi'
@@ -16,7 +16,7 @@ const QUICK_ACTIONS = [
     title: CALENDLY_DEMO_LABEL,
     desc: 'Elige fecha y hora en Calendly. Demo en línea, sin compromiso.',
     cta: 'Abrir calendario →',
-    href: CALENDLY_DEMO_URL,
+    href: '#',
     external: true,
     primary: true,
   },
@@ -67,7 +67,7 @@ export default function ContactoPage() {
             {QUICK_ACTIONS.map((action, i) => (
               <AnimatedSection key={action.id} delay={i * 60}>
                 <a
-                  href={action.href}
+                  href={action.id === 'calendly' ? calendlyDemoUrl() : action.id === 'registro' ? registroUrl() : action.href}
                   target={action.external ? '_blank' : undefined}
                   rel={action.external ? 'noreferrer' : undefined}
                   className={`group flex items-start gap-4 rounded-2xl p-5 transition-all hover:-translate-y-0.5 ${

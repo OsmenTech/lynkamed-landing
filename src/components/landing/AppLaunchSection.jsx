@@ -1,5 +1,5 @@
 import { AnimatedSection } from './AnimatedSection.jsx'
-import { ELECTRIC, CALENDLY_DEMO_URL, CALENDLY_DEMO_LABEL } from './constants.js'
+import { ELECTRIC, CALENDLY_DEMO_LABEL, calendlyDemoUrl, registroUrl } from './constants.js'
 
 const APP_HIGHLIGHTS = [
   'Pasaporte de salud con QR',
@@ -61,7 +61,7 @@ export function AppLaunchSection() {
 
           <div className="mt-10 flex flex-wrap gap-3">
             <a
-              href={CALENDLY_DEMO_URL}
+              href={calendlyDemoUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-glow button-press inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold text-white"
@@ -70,7 +70,7 @@ export function AppLaunchSection() {
               {CALENDLY_DEMO_LABEL}
             </a>
             <a
-              href="https://app.lynkamed.mx/registro"
+              href={registroUrl()}
               className="button-press inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:bg-white/10"
             >
               Preparar mi clínica

@@ -1,4 +1,4 @@
-import { NAVY, ELECTRIC, CALENDLY_DEMO_URL, CALENDLY_DEMO_LABEL } from './constants.js'
+import { NAVY, ELECTRIC, CALENDLY_DEMO_LABEL, calendlyDemoUrl, registroUrl } from './constants.js'
 import { IconCheckCircle } from './Icons.jsx'
 
 const SPACES = [
@@ -49,14 +49,14 @@ export function MultiWorkspaceSection() {
 
             <div className="mt-9 flex flex-wrap gap-3">
               <a
-                href="https://app.lynkamed.mx/registro?tipo=consultorio"
+                href={registroUrl('https://app.lynkamed.mx/registro?tipo=consultorio')}
                 className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-bold text-white transition hover:opacity-95"
                 style={{ backgroundColor: NAVY }}
               >
                 Probar consultorio gratis
               </a>
               <a
-                href={CALENDLY_DEMO_URL}
+                href={calendlyDemoUrl()}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"

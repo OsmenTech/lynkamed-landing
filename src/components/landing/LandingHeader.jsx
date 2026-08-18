@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { ELECTRIC, ELECTRIC_HOVER, NAV_LINKS, NAVY } from './constants.js'
+import { ELECTRIC, ELECTRIC_HOVER, NAV_LINKS, NAVY, registroUrl } from './constants.js'
 import { IconClose, IconMenu } from './Icons.jsx'
 
 export function LandingHeader() {
@@ -79,7 +79,7 @@ export function LandingHeader() {
             Iniciar sesión
           </a>
           <a
-            href="https://app.lynkamed.mx/registro"
+            href={registroUrl()}
             className="btn-glow button-press hidden rounded-lg px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-colors sm:inline-flex"
             style={{ backgroundColor: ELECTRIC }}
             onMouseEnter={(e) => {

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { FAQ_ITEMS } from './constants.js'
-import { ELECTRIC, CALENDLY_DEMO_URL, CALENDLY_DEMO_LABEL } from './constants.js'
+import { ELECTRIC, CALENDLY_DEMO_LABEL, calendlyDemoUrl } from './constants.js'
 
 const FAQ_BY_ID = Object.fromEntries(FAQ_ITEMS.map((item) => [item.id, item]))
 
@@ -346,7 +346,7 @@ export function FAQSection() {
                     Hablar con un especialista
                   </a>
                   <a
-                    href={CALENDLY_DEMO_URL}
+                    href={calendlyDemoUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"

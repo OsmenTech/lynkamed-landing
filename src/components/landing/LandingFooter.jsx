@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { NAVY, CALENDLY_DEMO_URL, CALENDLY_DEMO_LABEL } from './constants.js'
+import { NAVY, CALENDLY_DEMO_LABEL, calendlyDemoUrl } from './constants.js'
 
 const SOCIAL_LINKS = [
   { name: 'Facebook', href: 'https://www.facebook.com/lynkamed', icon: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' },
@@ -73,7 +73,7 @@ export function LandingFooter() {
             <ul className="space-y-3 text-sm">
               <li><a href={SALES_EMAIL_URL} className="transition-colors hover:text-blue-300">{SALES_EMAIL}</a></li>
               <li><a href={SALES_WHATSAPP_URL} target="_blank" rel="noreferrer" className="transition-colors hover:text-blue-300">WhatsApp: {SALES_WHATSAPP}</a></li>
-              <li><a href={CALENDLY_DEMO_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-300">{CALENDLY_DEMO_LABEL}</a></li>
+              <li><a href={calendlyDemoUrl()} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-blue-300">{CALENDLY_DEMO_LABEL}</a></li>
             </ul>
           </div>
 

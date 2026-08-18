@@ -33,7 +33,7 @@ const PAGE_META = {
   '/precios': {
     title: 'Planes y precios | Lynkamed — Consultorio y clínica',
     description:
-      'Planes y precios de Lynkamed para consultorio y clínica. 30 días de prueba gratis sin tarjeta de crédito.',
+      'Planes Lynkamed: consultorio desde $699/mes, clínica dental $1,699/mes. Matriz por especialidad. 30 días gratis sin tarjeta.',
   },
   '/faq': {
     title: 'Preguntas frecuentes | Lynkamed',
