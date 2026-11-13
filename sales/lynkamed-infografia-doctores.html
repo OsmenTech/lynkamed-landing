@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LynkaMed — Infografía doctores</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d2a54;
+      --navy-deep: #071f3d;
+      --cyan: #00aed9;
+      --cyan-bright: #00d4ff;
+      --cyan-soft: #e8f8fc;
+      --ink: #1e293b;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --soft: #f7fafc;
+    }
+    html, body {
+      width: 210mm; height: 297mm;
+      font-family: 'Figtree', system-ui, sans-serif;
+      color: var(--ink); background: #94a3b8;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .sheet {
+      width: 210mm; height: 297mm;
+      margin: 0 auto; background: #fff;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    @media screen {
+      body { padding: 16px 0 48px; }
+      .sheet { box-shadow: 0 14px 40px rgba(13,42,84,.22); }
+    }
+    @media print {
+      html, body { background: #fff; }
+      .no-print { display: none !important; }
+    }
+    .toolbar { display: flex; justify-content: center; gap: 8px; margin-bottom: 12px; }
+    .toolbar button {
+      font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800;
+      border: 0; border-radius: 999px; padding: 8px 14px; cursor: pointer;
+      background: var(--navy); color: #fff;
+    }
+
+    /* Hero */
+    .hero {
+      flex: 0 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      padding: 0 0 0 8mm;
+      min-height: 46mm;
+      background:
+        radial-gradient(ellipse 70% 120% at 92% 55%, rgba(0,174,217,.18), transparent 55%),
+        radial-gradient(ellipse 40% 70% at 78% 20%, rgba(13,42,84,.06), transparent 50%),
+        linear-gradient(180deg, #fff 0%, #eef9fc 100%);
+      border-bottom: 1px solid #d7eef5;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-copy {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 4mm 2mm 3.5mm 0;
+      position: relative;
+      z-index: 1;
+    }
+    .brand { display: flex; align-items: center; margin: -8px 0 1mm; }
+    .brand img {
+      height: 20mm;
+      width: auto;
+      max-width: 52mm;
+      object-fit: contain;
+      display: block;
+      margin-top: -7mm;
+      margin-bottom: -5mm;
+    }
+    h1 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 18px; font-weight: 800;
+      letter-spacing: -.03em; line-height: 1.1;
+      color: var(--cyan);
+      max-width: 118mm;
+    }
+    .lead {
+      margin-top: 1.6mm;
+      font-size: 10.4px; line-height: 1.34;
+      color: var(--navy); max-width: 114mm;
+    }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 1.6mm; margin-top: 2.2mm; }
+    .hero-pills span {
+      font-size: 8.6px; font-weight: 800;
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid rgba(0,174,217,.4);
+      border-radius: 999px;
+      padding: 1.3mm 2.8mm;
+    }
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-end;
+      padding: 0;
+      overflow: hidden;
+      min-height: 100%;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      right: -6mm;
+      bottom: -12mm;
+      width: 68mm;
+      height: 68mm;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,174,217,.22) 0%, rgba(0,174,217,.08) 42%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-visual img {
+      position: absolute;
+      top: 0;
+      right: -2mm;
+      bottom: -1mm;
+      z-index: 1;
+      height: 100%;
+      width: auto;
+      max-width: none;
+      object-fit: cover;
+      object-position: right top;
+      filter: drop-shadow(0 6px 16px rgba(13,42,84,.16));
+    }
+
+    /* Main vertical stack */
+    .body {
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 3.5mm 8mm 2mm;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8mm;
+      justify-content: flex-start;
+    }
+
+    /* Products */
+    .products-block { display: flex; flex-direction: column; gap: 1mm; background: transparent; }
+    .products {
+      display: flex;
+      align-items: flex-end;
+      gap: 3mm;
+      background: transparent;
+    }
+    .phone {
+      flex: 0 0 36mm;
+      width: 36mm;
+      /* Match screenshot ratio so the photo isn't cropped/stretched */
+      aspect-ratio: 440 / 996;
+      height: auto;
+      border: 1.4px solid #0f172a;
+      border-radius: 3.5mm;
+      overflow: hidden;
+      background: #fff;
+      position: relative;
+      box-shadow: none;
+      border-color: #e2e8f0;
+    }
+    .phone::before {
+      content: '';
+      position: absolute; top: 1.2mm; left: 50%; transform: translateX(-50%);
+      width: 7.5mm; height: 1mm; border-radius: 999px; background: #334155; z-index: 2;
+    }
+    .phone img {
+      position: absolute;
+      left: 0; right: 0;
+      top: 0; bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .browser-col {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 1.6mm;
+    }
+    .plan-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.35fr;
+      gap: 1.4mm;
+    }
+    .plan-chip {
+      background: #fff;
+      border: 1px solid rgba(0,174,217,.32);
+      border-radius: 1.6mm;
+      padding: 1.4mm 1.6mm 1.3mm;
+    }
+    .plan-chip .k {
+      display: block;
+      font-family: 'Manrope', sans-serif;
+      font-size: 6.4px; font-weight: 800;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.35mm;
+    }
+    .plan-chip .v {
+      font-family: 'Manrope', sans-serif;
+      font-size: 9.2px; font-weight: 800;
+      color: var(--navy);
+      line-height: 1.22;
+    }
+    .plan-chip.trial {
+      background: var(--cyan-soft);
+      border-color: rgba(0,174,217,.42);
+    }
+    .browser {
+      flex: 0 0 auto;
+      min-width: 0;
+      height: 62.3mm;
+      border: 1px solid var(--line);
+      border-radius: 2.2mm;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: none;
+    }
+    .browser-chrome {
+      display: none;
+    }
+    .browser-chrome i {
+      width: 1.3mm; height: 1.3mm; border-radius: 50%;
+      display: inline-block;
+    }
+    .browser-chrome i:nth-child(1) { background: #f87171; }
+    .browser-chrome i:nth-child(2) { background: #fbbf24; }
+    .browser-chrome i:nth-child(3) { background: #34d399; }
+    .browser-chrome .url {
+      flex: 1;
+      margin-left: 1.2mm;
+      height: 2mm;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      font-size: 5px; color: #64748b;
+      display: flex; align-items: center; padding: 0 1.4mm;
+      font-weight: 600;
+    }
+    .browser-body {
+      flex: 1 1 auto;
+      min-height: 0;
+      width: 100%;
+      background: #fff;
+      position: relative;
+    }
+    .browser-body img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: left top;
+    }
+    .product-captions {
+      display: grid;
+      grid-template-columns: 36mm 1fr;
+      gap: 3mm;
+    }
+    .product-captions .cap {
+      font-size: 6.8px; line-height: 1.28; color: #475569;
+    }
+    .product-captions .cap strong {
+      display: block;
+      font-family: 'Manrope', sans-serif;
+      font-size: 7.4px; font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.3mm;
+    }
+    .product-captions .cap .tag {
+      display: inline-block;
+      font-size: 7.6px; font-weight: 800; letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #fff; background: var(--cyan);
+      border-radius: 999px; padding: 0.85mm 2.2mm;
+      margin-bottom: 0.4mm;
+    }
+    .product-captions .cap .tag.navy { background: var(--navy); }
+
+    /* Why band — more air so nothing clips */
+    .why-band {
+      border-radius: 2.8mm;
+      overflow: hidden;
+      background: var(--cyan-soft);
+      color: var(--navy);
+      padding: 2.2mm 3mm 1.6mm;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4mm;
+      flex: 0 0 auto;
+      margin-bottom: 0;
+      border: 1px solid rgba(13,42,84,.18);
+    }
+    .why-band h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 10.4px; font-weight: 800;
+      color: var(--navy);
+      letter-spacing: .04em; text-transform: uppercase;
+      margin: 0;
+    }
+    .benefits {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8mm 4.5mm;
+    }
+    .benefits li {
+      position: relative;
+      padding-left: 5.2mm;
+      font-size: 8.8px;
+      line-height: 1.38;
+      color: rgba(13,42,84,.92);
+    }
+    .benefits li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--cyan);
+      font-weight: 800;
+      font-size: 9px;
+    }
+    .benefits strong { color: var(--navy); font-weight: 800; }
+    .dark-why {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2mm;
+      padding-top: 1.8mm;
+      border-top: 1px solid rgba(13,42,84,.14);
+    }
+    .dark-why p {
+      font-size: 8px; line-height: 1.32;
+      color: rgba(13,42,84,.88);
+      margin: 0;
+    }
+    .dark-why b { color: var(--navy); font-weight: 800; }
+    .dark-why .note {
+      grid-column: 1 / -1;
+      font-size: 6.2px; color: rgba(13,42,84,.45); margin-top: 0;
+    }
+    .limits {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5mm;
+    }
+    .limits div {
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(0,174,217,.22);
+      border-radius: 1.5mm;
+      padding: 1.6mm 1.4mm;
+      font-size: 7.4px; line-height: 1.25;
+      text-align: center;
+    }
+    .limits strong {
+      display: block;
+      font-family: 'Manrope', sans-serif;
+      font-size: 12px; color: var(--navy);
+      margin-bottom: 0.35mm;
+    }
+    .trial-details {
+      display: block;
+      margin-top: 0.35mm;
+      font-size: 6.4px;
+      line-height: 1.2;
+      color: rgba(13,42,84,.78);
+      font-weight: 600;
+    }
+
+    /* Features — más vistosas, tipografía más grande */
+    .section-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      border-radius: 1.8mm;
+      padding: 2.1mm 3mm;
+      font-family: 'Manrope', sans-serif;
+      font-size: 11.4px; font-weight: 800;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: #fff;
+    }
+    .section-bar.doctores { background: var(--navy); }
+    .section-bar.pacientes { background: var(--cyan); }
+    .section-bar em { font-style: normal; font-size: 8.2px; opacity: .9; font-weight: 700; letter-spacing: .05em; }
+
+    .feat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5mm 2.2mm;
+      padding: 1.5mm 1.3mm 1.2mm;
+      border-radius: 0 0 2mm 2mm;
+      background: linear-gradient(180deg, #f3fbfd 0%, #fff 100%);
+      border: 1px solid rgba(0,174,217,.16);
+      border-top: 0;
+      margin-top: -0.4mm;
+    }
+    .feat-grid.two { grid-template-columns: 1fr 1fr; }
+    .item {
+      display: grid;
+      grid-template-columns: 7.2mm 1fr;
+      gap: 1.7mm;
+      padding: 1.5mm 1.4mm;
+      align-items: start;
+      background: #fff;
+      border: 1px solid rgba(13,42,84,.08);
+      border-radius: 1.8mm;
+    }
+    .ico {
+      width: 7.2mm; height: 7.2mm; border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--cyan-soft); color: var(--cyan);
+      border: 1px solid rgba(0,174,217,.22);
+    }
+    .ico svg {
+      width: 3.7mm; height: 3.7mm;
+      fill: none; stroke: currentColor; stroke-width: 1.9;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .item h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 10.8px; font-weight: 800; color: var(--navy);
+      margin-bottom: 0.4mm;
+      display: flex; gap: 1.2mm; align-items: baseline;
+    }
+    .item h3 .n { color: var(--cyan); font-size: 9.4px; font-weight: 800; }
+    .item p { font-size: 9px; line-height: 1.32; color: #1e293b; }
+    .item strong { color: var(--navy); font-weight: 800; }
+
+    /* Footer + QR — más bajo, tipografía más grande */
+    .qr-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2mm;
+      flex: 0 0 auto;
+    }
+    .qr-card {
+      text-align: left;
+      text-decoration: none;
+      color: inherit;
+      background: var(--cyan-soft);
+      border: 1px solid rgba(0,174,217,.35);
+      border-radius: 1.2mm;
+      padding: 0.6mm 1.3mm 0.6mm 0.6mm;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+    }
+    .qr-card img {
+      width: 10.5mm; height: 10.5mm;
+      object-fit: contain;
+      display: block; margin: 0;
+      border-radius: 0.5mm;
+      background: #fff;
+      flex-shrink: 0;
+    }
+    .qr-card strong {
+      display: block;
+      font-family: 'Manrope', sans-serif;
+      font-size: 7.6px; font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+    }
+
+    .footer {
+      flex: 0 0 auto;
+      margin: 0;
+      padding: 0.8mm 1.8mm;
+      border: 1.2px solid rgba(0,174,217,.4);
+      border-radius: 1.6mm;
+      background: #fff;
+      display: flex; align-items: center; justify-content: space-between; gap: 2mm;
+      position: relative;
+      z-index: 2;
+      min-height: 0;
+    }
+    .footer-msg {
+      font-size: 7.4px; line-height: 1.2;
+      color: var(--navy); font-weight: 600;
+      display: flex; align-items: center; gap: 1.2mm;
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+    .footer-msg .shield {
+      width: 3.8mm; height: 3.8mm; border-radius: 50%;
+      background: var(--cyan-soft); color: var(--cyan);
+      display: grid; place-items: center; flex-shrink: 0;
+      border: 1px solid rgba(0,174,217,.35);
+    }
+    .footer-msg .shield svg { width: 2mm; height: 2mm; }
+    .footer-msg .copy strong { font-weight: 800; }
+    .footer-msg .copy .cta-line {
+      display: block;
+      margin-top: 0.1mm;
+      font-size: 6.8px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar no-print">
+    <button type="button" onclick="window.print()">Imprimir / Guardar PDF</button>
+  </div>
+
+  <section class="sheet">
+    <header class="hero">
+      <div class="hero-copy">
+        <div class="brand">
+          <img src="lynkamed-logo.png" alt="LynkaMed" />
+        </div>
+        <h1>Recupera el control y ahorra horas en trabajo administrativo.</h1>
+        <p class="lead">
+          El único ecosistema médico en México que integra expedientes especializados,
+          facturación CFDI 4.0 en un clic y app propia para tus pacientes —
+          alineado a <strong>NOM-004</strong> y <strong>NOM-024</strong>, con controles para
+          operar con mayor seguridad ante <strong>COFEPRIS</strong>.
+        </p>
+        <div class="hero-pills">
+          <span>Web clínica</span>
+          <span>App paciente gratis</span>
+          <span>CFDI 4.0</span>
+          <span>NOM-004 · NOM-024</span>
+          <span>COFEPRIS</span>
+          <span>Prueba 30 días</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <img src="lynkamed-infografia-hero.png" alt="" />
+      </div>
+    </header>
+
+    <div class="body">
+      <div class="section-bar doctores">Para el doctor / clínica <em>operación · NOM-004 · NOM-024 · COFEPRIS</em></div>
+      <div class="feat-grid">
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+          <div>
+            <h3><span class="n">01</span> Agenda inteligente</h3>
+            <p><strong>Reduce ausentismo:</strong> recordatorios por WhatsApp y agenda en tiempo real.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div>
+          <div>
+            <h3><span class="n">02</span> Expediente clínico</h3>
+            <p>Notas por especialidad y historial completo por paciente.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div>
+            <h3><span class="n">03</span> Finanzas y caja</h3>
+            <p>Cobros, recibos y comisiones; cortes listos para Excel.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg></div>
+          <div>
+            <h3><span class="n">04</span> Facturación CFDI 4.0</h3>
+            <p><strong>Facturación sin retrabajo:</strong> genera CFDI 4.0 al cobrar la consulta.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></div>
+          <div>
+            <h3><span class="n">05</span> Recetas con e.firma</h3>
+            <p><strong>Recetas en 30 segundos:</strong> e.firma (FIEL) + plantilla oficial.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg></div>
+          <div>
+            <h3><span class="n">06</span> Inventario y cirugías</h3>
+            <p>Control de stock con alertas y surtido desde inventario.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg></div>
+          <div>
+            <h3><span class="n">07</span> Multi-espacio</h3>
+            <p><strong>Escala sin límites:</strong> múltiples consultorios, médicos y sucursales.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></div>
+          <div>
+            <h3><span class="n">08</span> Chat y presupuestos</h3>
+            <p>Mensajería en el expediente y aceptación del paciente desde la app.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div>
+            <h3><span class="n">09</span> Comisiones del equipo</h3>
+            <p>Sueldo base + % por procedimiento en cortes día/mes/año.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-bar pacientes">Para el paciente <em>app gratis · continuidad · emergencia</em></div>
+      <div class="feat-grid two">
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v3M14 20h3M17 17h3v3"/></svg></div>
+          <div>
+            <h3><span class="n">10</span> Pasaporte de Salud + QR</h3>
+            <p>Identidad clínica en recepción y datos críticos en emergencia.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+          <div>
+            <h3><span class="n">11</span> Citas, docs y bienestar</h3>
+            <p>Agenda, PDFs, pasos/agua/ánimo y planes de nutrición.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div>
+            <h3><span class="n">12</span> Protección de datos</h3>
+            <p>Cifrado, roles y trazabilidad alineados a <strong>NOM-004</strong> / <strong>NOM-024</strong> y buenas prácticas <strong>COFEPRIS</strong>.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+          <div>
+            <h3><span class="n">13</span> Soporte y recordatorios</h3>
+            <p>Tickets, push y chat con la clínica sin WhatsApp personal.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="products-block">
+        <div class="products">
+          <div class="phone">
+            <img src="lynkamed-infografia-app-paciente.png" alt="App paciente LynkaMed" />
+          </div>
+          <div class="browser-col">
+            <div class="plan-strip">
+              <div class="plan-chip">
+                <span class="k">Consultorio</span>
+                <div class="v">5 usuarios</div>
+              </div>
+              <div class="plan-chip">
+                <span class="k">Clínica</span>
+                <div class="v">20 usuarios</div>
+              </div>
+              <div class="plan-chip trial">
+                <span class="k">30 días gratis</span>
+                <div class="v">Onboarding, capacitación, migración y seguimiento</div>
+              </div>
+            </div>
+            <div class="browser">
+              <div class="browser-chrome">
+                <i></i><i></i><i></i>
+                <div class="url">app.lynkamed.mx</div>
+              </div>
+              <div class="browser-body">
+                <img src="lynkamed-infografia-web-clinica.png" alt="Portal web clínica LynkaMed" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-captions">
+          <div class="cap">
+            <span class="tag">App paciente</span>
+          </div>
+          <div class="cap">
+            <span class="tag navy">Portal Web</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-band">
+        <h3>Por qué LynkaMed</h3>
+        <ul class="benefits">
+          <li><strong>Cero duplicación de trabajo:</strong> recepción, consulta y caja en un solo flujo continuo</li>
+          <li><strong>Menos llamadas, más confirmaciones:</strong> app del paciente gratis incluida</li>
+          <li><strong>Especialidades reales:</strong> notas pensadas para tu práctica, no un formulario genérico</li>
+          <li><strong>Seguridad normativa:</strong> expediente alineado a NOM-004 y NOM-024; e.firma y CFDI para operar con COFEPRIS</li>
+          <li><strong>Escala con tu clínica:</strong> multi-consultorio y multi-sucursal en la misma cuenta</li>
+          <li><strong>Prueba sin riesgo:</strong> 30 días gratis · demo 10 min · cancela cuando quieras</li>
+        </ul>
+        <div class="dark-why">
+          <p><b>Menos fricción:</b> el QR vincula al paciente al instante.</p>
+          <p><b>Más control clínico:</b> cita, expediente y chat juntos.</p>
+          <p><b>Más claridad financiera:</b> caja, presupuestos y CFDI.</p>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div class="footer-msg">
+          <span class="shield" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </span>
+          <div class="copy">
+            <div>
+              Todo lo que tu clínica necesita en un solo lugar ·
+              <strong>lynkamed.mx</strong> · ventas@lynkamed.mx
+            </div>
+            <span class="cta-line">Prueba LynkaMed 30 días gratis · Escanea un QR para agendar o escribirnos</span>
+          </div>
+        </div>
+        <div class="qr-row">
+          <a class="qr-card" href="https://calendly.com/osnayama8/30min" target="_blank" rel="noopener noreferrer">
+            <img src="qr/qr-demo.png" alt="QR Calendly demo" />
+            <strong>Calendly · demo</strong>
+          </a>
+          <a class="qr-card" href="https://wa.me/525562297133" target="_blank" rel="noopener noreferrer">
+            <img src="qr/qr-whatsapp.png" alt="QR WhatsApp" />
+            <strong>WhatsApp ventas</strong>
+          </a>
+        </div>
+      </footer>
+    </div>
+  </section>
+</body>
+</html>
